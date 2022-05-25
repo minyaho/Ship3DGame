@@ -1,0 +1,115 @@
+{
+    "name": "PlayerAction",
+    "maps": [
+        {
+            "name": "Free look Camera",
+            "id": "fa19d9e1-8864-40f2-b9e4-e50c2fafdb2d",
+            "actions": [
+                {
+                    "name": "MouseXY",
+                    "type": "PassThrough",
+                    "id": "954e3431-16ae-4ec6-a62d-90c503a5d6f1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseZoom",
+                    "type": "PassThrough",
+                    "id": "1bf91865-bb2a-40aa-b2a7-b6d75c069469",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c53da5cb-b79c-4f6e-b8ee-f09aec5055da",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseXY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2299db2b-f3fe-432e-926b-f986d2c0af90",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player Control",
+            "id": "170a13d4-1deb-47c7-a8fc-eb6fed04c660",
+            "actions": [
+                {
+                    "name": "WASD",
+                    "type": "Button",
+                    "id": "6df94eb7-53fc-49c2-a50b-39b15a470b25",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "25c82b6f-e53e-4344-9adf-931aa7a48f21",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "731b5462-4a47-4ca9-a8a8-16e7ada56d24",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6813d9fe-65d2-410c-9815-eb4e36c721f6",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "586a5b4c-bab3-4c2e-be33-82bac8e2c299",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
