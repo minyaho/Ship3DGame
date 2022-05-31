@@ -9,14 +9,14 @@ public class HelicopterController : MonoBehaviour
     public HeliRotorController MainRotorController;
     public HeliRotorController SubRotorController;
 
-    public float TurnForce = 3f;
+    public float TurnForce = 4f;
     public float ForwardForce = 10f;
     public float ForwardTiltForce = 20f;
-    public float TurnTiltForce = 30f;
+    public float TurnTiltForce = 40f;
     public float EffectiveHeight = 100f;
 
-    public float turnTiltForcePercent = 1.5f;
-    public float turnForcePercent = 1.3f;
+    public float turnTiltForcePercent = 6.5f;
+    public float turnForcePercent = 7.3f;
 
     private float _engineForce;
     public float EngineForce

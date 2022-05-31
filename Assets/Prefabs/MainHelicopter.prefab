@@ -82,13 +82,13 @@ MonoBehaviour:
   HelicopterModel: {fileID: 5015216157513116563}
   MainRotorController: {fileID: 5015216157853114080}
   SubRotorController: {fileID: 5015216159122573025}
-  TurnForce: 3
+  TurnForce: 4
   ForwardForce: 10
   ForwardTiltForce: 20
-  TurnTiltForce: 30
+  TurnTiltForce: 40
   EffectiveHeight: 100
-  turnTiltForcePercent: 1.5
-  turnForcePercent: 1.3
+  turnTiltForcePercent: 6.5
+  turnForcePercent: 7.3
   IsOnGround: 1
 --- !u!1 &5015216159076290921
 GameObject:
