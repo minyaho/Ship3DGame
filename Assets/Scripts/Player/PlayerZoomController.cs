@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Cinemachine;
 public class PlayerZoomController : MonoBehaviour
 {
-    [SerializeField] private InputActionAsset inputProvider;
+  /*  [SerializeField] private InputActionAsset inputProvider;
     [SerializeField] private CinemachineFreeLook freeLookCameraToZoom;
     [SerializeField] private float zoomSpeed = 3.0f;
     [SerializeField] private float zoomAcceleration = 2.5f;
@@ -66,6 +65,6 @@ public class PlayerZoomController : MonoBehaviour
         freeLookCameraToZoom.m_Orbits[1].m_Radius = currentMiddleRigRadius;
         freeLookCameraToZoom.m_Orbits[0].m_Height = freeLookCameraToZoom.m_Orbits[1].m_Radius;
         freeLookCameraToZoom.m_Orbits[2].m_Height = -freeLookCameraToZoom.m_Orbits[1].m_Radius;
-    }
+    }*/
 
 }

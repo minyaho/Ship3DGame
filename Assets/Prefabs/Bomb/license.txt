@@ -1,0 +1,11 @@
+Model Information:
+* title:	M29 Cluster Bomb
+* source:	https://sketchfab.com/3d-models/m29-cluster-bomb-7c75efe6973549ec9c7a2f113f079c38
+* author:	Andrej Grave (https://sketchfab.com/andrej.grave)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "M29 Cluster Bomb" (https://sketchfab.com/3d-models/m29-cluster-bomb-7c75efe6973549ec9c7a2f113f079c38) by Andrej Grave (https://sketchfab.com/andrej.grave) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
