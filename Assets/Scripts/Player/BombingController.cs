@@ -13,13 +13,10 @@ public class BombingController : MonoBehaviour
     public Transform bombSpawn;
 
     private Rigidbody helicopter;
-    private HelicopterController helicopterController;
-    private GameObject predictObject;
     // Start is called before the first frame update
     void Start()
     {
         helicopter = GetComponent<Rigidbody>();
-        helicopterController = GetComponent<HelicopterController>();
     }
 
     // Update is called once per frame
@@ -35,9 +32,9 @@ public class BombingController : MonoBehaviour
     // 預判炸彈烙下的位置，然後設定標記點
     void SimulateTrajectory()
     {
-        Vector3 point1 = this.transform.position;
+        Vector3 point1 = bombSpawn.position;
         Vector3 predictedBulletVelocity =  new Vector3( helicopter.velocity.x , 0, helicopter.velocity.z );;
-        float stepSize = 0.1f / 6;
+        float stepSize = 0.1f / 12;
         for(float step = 0; step < 10; step += stepSize)
         {
             predictedBulletVelocity += Physics.gravity * stepSize;
@@ -66,11 +63,11 @@ public class BombingController : MonoBehaviour
     //     Gizmos.color = Color.red;
     //     Vector3 point1 = this.transform.position;
     //     Vector3 predictedBulletVelocity = new Vector3( helicopter.velocity.x, 0, helicopter.velocity.z );;
-    //     float stepSize = 0.01f;
-    //     for(float step = 0; step < 100; step += stepSize)
+    //      float stepSize = 0.1f / 12;
+    //     for(float step = 0; step < 10; step += stepSize)
     //     {
     //         predictedBulletVelocity += Physics.gravity * stepSize;
-    //         Vector3 point2 = point1 + (predictedBulletVelocity * stepSize);
+    //         Vector3 point2 = point1 + (predictedBulletVelocity * stepSize );
     //         Gizmos.DrawLine(point1, point2);
     //         point1 = point2;
     //     }
@@ -83,7 +80,7 @@ public class BombingController : MonoBehaviour
         {
             GameObject newBomb = Instantiate(bomb, bombSpawn.position, bombSpawn.rotation );
             Vector3 velocity = new Vector3( helicopter.velocity.x, 0, helicopter.velocity.z );
-            newBomb.GetComponent<Rigidbody>().velocity = velocity;
+            newBomb.GetComponent<BombController>().bombVelocity = velocity;
             newBomb.transform.Rotate(new Vector3(0, newBomb.GetComponent<Rigidbody>().velocity.magnitude, 0));
         }
     }

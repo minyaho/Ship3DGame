@@ -7,23 +7,20 @@ public class BombController : MonoBehaviour
     [Header("Explosion")]
     public GameObject explosionPrefab;
     public int explosionLifeTime = 5;
-    private GameObject exlosionEffect;
 
     [Header("Parmaters")]
-    public int predictStepPerFrame = 6;
+    public int predictStepPerFrame = 12;
     public int bomblifeTime = 30;
 
     [Header("Debug")]
-    public bool enableDebugVelocity = false;
     [SerializeField] public Vector3 bombVelocity;
+
+    private AudioSource fallingSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        if( enableDebugVelocity == false )
-        {
-            bombVelocity = GetComponent<Rigidbody>().velocity;
-        }
+        fallingSound = GetComponent<AudioSource>();
         StartCoroutine( BombLifeTimer() );
     }
 
@@ -32,26 +29,29 @@ public class BombController : MonoBehaviour
     {
         Vector3 point1 = this.transform.position;
         float stepSize = 0.1f / predictStepPerFrame;
-        bombVelocity += Physics.gravity * stepSize ;
-        Vector3 point2 = point1 + (bombVelocity * stepSize);
-        point1 = point2;
+        for(float step = 0; step < 1; step += stepSize)
+        {
+            bombVelocity += Physics.gravity * stepSize * Time.deltaTime;
+            Vector3 point2 = point1 + (bombVelocity * stepSize * Time.deltaTime);
+            point1 = point2;
+        }
         this.transform.position = point1;
     }
 
-    // void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Vector3 point1 = this.transform.position;
-    //     Vector3 predictedBulletVelocity = bombVelocity;
-    //     float stepSize = 1.0f / predictStepPerFrame;
-    //     for(float step = 0; step < 1; step += stepSize)
-    //     {
-    //         predictedBulletVelocity += Physics.gravity * stepSize * Time.deltaTime;
-    //         Vector3 point2 = point1 + (predictedBulletVelocity * stepSize * Time.deltaTime);
-    //         Gizmos.DrawLine(point1, point2);
-    //         point1 = point2;
-    //     }
-    // }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 point1 = this.transform.position;
+        Vector3 predictedBulletVelocity = bombVelocity;
+        float stepSize = 1.0f / predictStepPerFrame;
+        for(float step = 0; step < 10; step += stepSize)
+        {
+            predictedBulletVelocity += Physics.gravity * stepSize;
+            Vector3 point2 = point1 + (predictedBulletVelocity * stepSize);
+            Gizmos.DrawLine(point1, point2);
+            point1 = point2;
+        }
+    }
 
 
     IEnumerator BombLifeTimer()
@@ -64,7 +64,7 @@ public class BombController : MonoBehaviour
     private void OnHitTheGround()
     {
         Destroy( this.gameObject );
-        exlosionEffect = Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+        GameObject exlosionEffect = Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
         Destroy(exlosionEffect, explosionLifeTime);
     }
 
@@ -78,7 +78,7 @@ public class BombController : MonoBehaviour
         {
             return;
         }
-        if( collider.CompareTag("PlayerBullet") )
+        if( collider.CompareTag("PlayerProjectile") )
         {
             return;
         }
