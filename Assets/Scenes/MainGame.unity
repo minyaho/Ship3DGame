@@ -3219,7 +3219,7 @@ MonoBehaviour:
   bomb: {fileID: 7668729460804409106, guid: edca06f2eeb28714facabaa496a14170, type: 3}
   bombSpawn: {fileID: 482906201}
   bombingTimer:
-    coolDownAmount: 1000
+    coolDownAmount: 2
 --- !u!1 &1744467157
 GameObject:
   m_ObjectHideFlags: 0

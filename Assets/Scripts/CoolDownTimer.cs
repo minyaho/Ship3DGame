@@ -11,7 +11,7 @@ public class CoolDownTimer
     /// <summary>
     /// The amount of time to take to cool down.
     /// </summary>
-    public float coolDownAmount = 0.5f;
+    [SerializeField] public float coolDownAmount = 0.5f;
 
     /// <summary>
     /// The time that this cool down completed.
@@ -33,6 +33,10 @@ public class CoolDownTimer
     private Method m_methodToCall;
 
     /// <summary> 
+    /// The check execute method for calling when fail (optional).
+    /// </summary>
+    private Method m_notCompleteMethod;
+    /// <summary> 
     /// The definition of check method.
     /// </summary>
     public delegate bool CheckMethod();
@@ -41,30 +45,43 @@ public class CoolDownTimer
     /// </summary>
     private CheckMethod m_CheckMethodToCall;
 
+
+
     /// <summary> 
     /// Get remaining time of cool down.
     /// </summary>
     public float GetRemainingTime()
     {
-        return (m_coolDownCompleteTime - Time.time);
+        return Mathf.Max(m_coolDownCompleteTime - Time.time, 0);
     }
     private void StartCoolDown()
     {
         m_coolDownCompleteTime = Time.time + coolDownAmount;
     }   
 
-    public CoolDownTimer(Method method)
+    // Auto Repeat
+    public void Build(Method method)
     {
         StartCoolDown();
         m_methodToCall = method;
     }
 
-    public CoolDownTimer(Method method, CheckMethod check)
+    public void Build(Method method, CheckMethod check)
     {
         StartCoolDown();
         m_methodToCall = method;
-        m_CheckMethodToCall = check;;
+        m_CheckMethodToCall = check;
     }
+
+    public void Build(Method method, Method coolDownNotCompleteMethod, CheckMethod check)
+    {
+        StartCoolDown();
+        m_methodToCall = method;
+        m_CheckMethodToCall = check;
+        m_notCompleteMethod = coolDownNotCompleteMethod;
+    }
+
+
 
     /// <summary> 
     /// Force reset the cool down.
@@ -104,6 +121,13 @@ public class CoolDownTimer
             {
                 StartCoolDown();
                 m_methodToCall();
+            }
+        }
+        else
+        {
+            if( m_notCompleteMethod != null )
+            {
+                m_notCompleteMethod();
             }
         }
     }

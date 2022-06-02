@@ -11,14 +11,17 @@ public class BombingController : MonoBehaviour
     [Header("Bombing")]
     public GameObject bomb;
     public Transform bombSpawn;
-    public CoolDownTimer bombingTimer;
+    
+    [SerializeField] 
+    private CoolDownTimer bombingTimer;
 
     private Rigidbody helicopter;
     // Start is called before the first frame update
     void Start()
     {
-        bombingTimer = new CoolDownTimer( Bombing,  () =>  Input.GetKeyDown( KeyCode.Z ) );
+        bombingTimer.Build( Bombing,  () =>  Input.GetKeyDown( KeyCode.Z ) );
         helicopter = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
