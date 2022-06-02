@@ -24,15 +24,15 @@ public class RocketController : MonoBehaviour
     [SerializeField] private float _deviationSpeed = 2;
 
     private void FixedUpdate() {
-      /*  _rb.velocity = transform.forward * _speed;
+        _rb.velocity = transform.forward * _speed;
 
-        var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
-
+        float leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
+     
         PredictMovement(leadTimePercentage);
 
         AddDeviation(leadTimePercentage);
 
-        RotateRocket();*/
+        RotateRocket();
     }
 
     private void PredictMovement(float leadTimePercentage) {

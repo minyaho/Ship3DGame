@@ -38,7 +38,6 @@ public class HelicopterController : MonoBehaviour
     private Vector2 hTilt = Vector2.zero;
     private float hTurn = 0f;
     public bool IsOnGround = true;
-
     // Use this for initialization
 	void Start ()
 	{
@@ -50,31 +49,31 @@ public class HelicopterController : MonoBehaviour
   
     void FixedUpdate()
     {
-        LiftProcess();
-        MoveProcess();
-        TiltProcess();
+        LiftProcess(HelicopterModel);
+        MoveProcess(HelicopterModel);
+        TiltProcess(HelicopterModel);
     }
 
-    private void MoveProcess()
+    public void MoveProcess(Rigidbody rb)
     {
         var turn = TurnForce * Mathf.Lerp(hMove.x, hMove.x * (turnTiltForcePercent - Mathf.Abs(hMove.y)), Mathf.Max(0f, hMove.y));
         hTurn = Mathf.Lerp(hTurn, turn, Time.fixedDeltaTime * TurnForce);
-        HelicopterModel.AddRelativeTorque(0f, hTurn * HelicopterModel.mass, 0f);
-        HelicopterModel.AddRelativeForce(Vector3.forward * Mathf.Max(0f, hMove.y * ForwardForce * HelicopterModel.mass));
+        rb.AddRelativeTorque(0f, hTurn * rb.mass, 0f);
+        rb.AddRelativeForce(Vector3.forward * Mathf.Max(0f, hMove.y * ForwardForce * rb.mass));
     }
 
-    private void LiftProcess()
+    public void LiftProcess(Rigidbody rb)
     {
-        var upForce = 1 - Mathf.Clamp(HelicopterModel.transform.position.y / EffectiveHeight, 0, 1);
-        upForce = Mathf.Lerp(0f, EngineForce, upForce) * HelicopterModel.mass;
-        HelicopterModel.AddRelativeForce(Vector3.up * upForce);
+        var upForce = 1 - Mathf.Clamp(rb.transform.position.y / EffectiveHeight, 0, 1);
+        upForce = Mathf.Lerp(0f, EngineForce, upForce) * rb.mass;
+        rb.AddRelativeForce(Vector3.up * upForce);
     }
 
-    private void TiltProcess()
+    public void TiltProcess(Rigidbody rb)
     {
         hTilt.x = Mathf.Lerp(hTilt.x, hMove.x * TurnTiltForce, Time.deltaTime);
         hTilt.y = Mathf.Lerp(hTilt.y, hMove.y * ForwardTiltForce, Time.deltaTime);
-        HelicopterModel.transform.localRotation = Quaternion.Euler(hTilt.y, HelicopterModel.transform.localEulerAngles.y, -hTilt.x);
+        rb.transform.localRotation = Quaternion.Euler(hTilt.y, rb.transform.localEulerAngles.y, -hTilt.x);
     }
 
     private void OnKeyPressed(PressedKeyCode[] obj)
@@ -158,12 +157,16 @@ public class HelicopterController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter()
+
+    private void OnCollisionEnter(Collision collision)
     {
-        IsOnGround = true;
+        if( collision.gameObject.CompareTag("Terrain") )
+        {
+            IsOnGround = true;
+        }
     }
 
-    private void OnCollisionExit()
+    private void OnCollisionExit(Collision collision)
     {
         IsOnGround = false;
     }
