@@ -14,7 +14,8 @@ public class UIctrl_startmenu : MonoBehaviour
     {
         btnStart.onClick.AddListener(clickStart);
         btnSetting.onClick.AddListener(clickSetting);
-        FindObjectOfType<audio_manager>().play( "BGM");
+        FindObjectOfType<audio_manager>().play("BGM");
+        
     }
 
     // Update is called once per frame
