@@ -42,6 +42,7 @@ public class HelicopterController : MonoBehaviour
 	void Start ()
 	{
         ControlPanel.KeyPressed += OnKeyPressed;
+
 	}
 
 	void Update () {
@@ -165,7 +166,7 @@ public class HelicopterController : MonoBehaviour
     }
     private void OnTriggerEnter (Collider other)
     {
-        Debug.Log( "trigger (name) : " + other.gameObject.name );
+        // Debug.Log( "trigger (name) : " + other.gameObject.name );
     }
 
     private void OnCollisionExit(Collision collision)

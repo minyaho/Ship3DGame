@@ -26,6 +26,7 @@ public class RocketController : MonoBehaviour
 
     [Header("LIFE TIME")]
     [SerializeField] private float _maxLifeTime = 10; 
+    [SerializeField] private float _explosionLifeTime = 5;
 
     private void Start()
     {
@@ -73,7 +74,10 @@ public class RocketController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        if(_explosionPrefab) {
+            GameObject exlosionEffect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(exlosionEffect, _explosionLifeTime);
+        }
         if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
 
         Destroy(gameObject);
@@ -91,7 +95,7 @@ public class RocketController : MonoBehaviour
         if( gameObject != null )
         {
             _target = gameObject;
-            _targetRB = _targetRB.GetComponent<Rigidbody>();
+            _targetRB = _target.GetComponent<Rigidbody>();
         }
     }
     IEnumerator RocketLifeTimer()
