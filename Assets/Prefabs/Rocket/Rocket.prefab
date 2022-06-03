@@ -690,15 +690,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 2228104203348453821}
-  _target: {fileID: 0}
   _explosionPrefab: {fileID: 0}
-  _speed: 15
+  _speed: 60
   _rotateSpeed: 95
   _maxDistancePredict: 100
   _minDistancePredict: 5
   _maxTimePrediction: 5
   _deviationAmount: 50
   _deviationSpeed: 2
+  _maxLifeTime: 5
 --- !u!1 &2228104203354925926
 GameObject:
   m_ObjectHideFlags: 0

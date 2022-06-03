@@ -6,7 +6,8 @@ public class RocketController : MonoBehaviour
 {
     [Header("REFERENCES")] 
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private RocketTarget _target;
+    [HideInInspector] private GameObject _target;
+    private Rigidbody _targetRB;
     [SerializeField] private GameObject _explosionPrefab;
 
     [Header("MOVEMENT")] 
@@ -23,9 +24,24 @@ public class RocketController : MonoBehaviour
     [SerializeField] private float _deviationAmount = 50;
     [SerializeField] private float _deviationSpeed = 2;
 
+    [Header("LIFE TIME")]
+    [SerializeField] private float _maxLifeTime = 10; 
+
+    private void Start()
+    {
+        if( _target )
+        {
+            _targetRB = _target.GetComponent<Rigidbody>();
+        }
+        StartCoroutine(RocketLifeTimer());
+    }
     private void FixedUpdate() {
         _rb.velocity = transform.forward * _speed;
 
+        if( _target == null )
+        {
+            return;
+        }
         float leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
      
         PredictMovement(leadTimePercentage);
@@ -38,7 +54,7 @@ public class RocketController : MonoBehaviour
     private void PredictMovement(float leadTimePercentage) {
         var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
 
-        _standardPrediction = _target.Rb.position + _target.Rb.velocity * predictionTime;
+        _standardPrediction = _targetRB.position + _targetRB.velocity * predictionTime;
     }
 
     private void AddDeviation(float leadTimePercentage) {
@@ -68,5 +84,19 @@ public class RocketController : MonoBehaviour
         Gizmos.DrawLine(transform.position, _standardPrediction);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(_standardPrediction, _deviatedPrediction);
+    }
+
+    public void SetTarget(GameObject gameObject)
+    {
+        if( gameObject != null )
+        {
+            _target = gameObject;
+            _targetRB = _targetRB.GetComponent<Rigidbody>();
+        }
+    }
+    IEnumerator RocketLifeTimer()
+    {
+        yield return new WaitForSeconds(_maxLifeTime);
+        Destroy( this.gameObject );
     }
 }

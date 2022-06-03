@@ -12,14 +12,14 @@ public class BombingController : MonoBehaviour
     public GameObject bomb;
     public Transform bombSpawn;
     
-    [SerializeField] 
-    private CoolDownTimer bombingTimer;
+    [SerializeField] private SimpleTimer bombingTimer;
 
+    private bool bombReady = false;
     private Rigidbody helicopter;
     // Start is called before the first frame update
     void Start()
     {
-        bombingTimer.Build( Bombing,  () =>  Input.GetKeyDown( KeyCode.Z ) );
+        bombingTimer.Binding( () => bombReady = true,  () => (bombReady == false) );
         helicopter = GetComponent<Rigidbody>();
 
     }
@@ -27,7 +27,10 @@ public class BombingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bombingTimer.Update();
+        if( bombReady && Input.GetKeyDown( KeyCode.Z ) )
+        {
+            Bombing();
+        }
     }
 
     void FixedUpdate()
@@ -85,5 +88,6 @@ public class BombingController : MonoBehaviour
         Vector3 velocity = new Vector3( helicopter.velocity.x, 0, helicopter.velocity.z );
         newBomb.GetComponent<BombController>().bombVelocity = velocity;
         newBomb.transform.Rotate(new Vector3(0, newBomb.GetComponent<Rigidbody>().velocity.magnitude, 0));
+        bombReady = false;
     }
 }
