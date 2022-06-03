@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 2228104203348453821}
-  _explosionPrefab: {fileID: 0}
+  _explosionPrefab: {fileID: 8799090298770338723, guid: 99980b6dee5317c4b8b7a16a92a0fe66, type: 3}
   _speed: 60
   _rotateSpeed: 95
   _maxDistancePredict: 100

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class RocketShootController : MonoBehaviour
 {
-    [SerializeField] private List<RocketSpawner> _rocketSpawnList = new List<RocketSpawner>();
-    // Start is called before the first frame update
+    
+    [SerializeField] private GameObject _rocketSpawnerParent;
+
+    [SerializeField] private LockSystem _lockSystem;
+    private RocketSpawner[] _rocketSpawnList;
+
     void Start()
     {
- 
+        _rocketSpawnList = _rocketSpawnerParent.GetComponentsInChildren<RocketSpawner>();
     }
 
     // Update is called once per frame
@@ -20,6 +24,7 @@ public class RocketShootController : MonoBehaviour
             {
                 if( spawner.ready )
                 {
+                    spawner.SetTarget( _lockSystem.GetTargetObject() );
                     spawner.Launch();
                     break;
                 }
