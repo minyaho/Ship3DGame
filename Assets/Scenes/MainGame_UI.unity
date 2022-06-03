@@ -3041,7 +3041,7 @@ MonoBehaviour:
     score_board: {fileID: 0}
     score: 0
     hp: 0
-    hp_bar: {fileID: 0}
+    hp_bar: {fileID: 282439374}
 --- !u!114 &884541872
 MonoBehaviour:
   m_ObjectHideFlags: 0
