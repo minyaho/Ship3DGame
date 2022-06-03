@@ -11,6 +11,7 @@ public class BombController : MonoBehaviour
     [Header("Parmaters")]
     public int predictStepPerFrame = 12;
     public int bomblifeTime = 30;
+    public float attack = 100;
 
     [Header("Debug")]
     [SerializeField] public Vector3 bombVelocity;
@@ -74,6 +75,7 @@ public class BombController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject collider = collision.gameObject;
+        Debug.Log(collider.name);
         if( collider.CompareTag("Player") )
         {
             return;
@@ -81,6 +83,14 @@ public class BombController : MonoBehaviour
         if( collider.CompareTag("PlayerProjectile") )
         {
             return;
+        }
+        if( collider.CompareTag("Enemy") )
+        {
+            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
+            if (enemy != null)
+            {
+                enemy.OnDamage(attack);
+            }
         }
         OnHitTheGround();
     }

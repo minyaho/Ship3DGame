@@ -160,13 +160,16 @@ public class HelicopterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IsOnGround = true;
+        if( collision.gameObject.CompareTag("Terrain") )
+        {
+            IsOnGround = true;
+        }
 
     }
-    private void OnTriggerEnter (Collider other)
-    {
-        Debug.Log( "trigger (name) : " + other.gameObject.name );
-    }
+    // private void OnTriggerEnter (Collider other)
+    // {
+    //     Debug.Log( "trigger (name) : " + other.gameObject.name );
+    // }
 
     private void OnCollisionExit(Collision collision)
     {
