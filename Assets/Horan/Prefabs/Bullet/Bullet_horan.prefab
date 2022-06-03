@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6596973193788729492}
   - component: {fileID: 8704498212576601578}
   - component: {fileID: 2443556484502602862}
-  - component: {fileID: 1439283635187051747}
   - component: {fileID: 3056471961474767672}
+  - component: {fileID: 5400637823943646839}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet_horan
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,23 +206,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.05
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1439283635187051747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6596973193788729495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794fe79cce5175d4599a767d78f22a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 420
-  predictStepPerFrame: 6
-  lifeTime: 5
-  attack: 10
-  bulletVelocity: {x: 0, y: 0, z: 150}
 --- !u!54 &3056471961474767672
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -239,3 +222,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5400637823943646839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596973193788729495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde95183302d09345b75155aa84ccd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 420
+  predictStepPerFrame: 6
+  lifeTime: 5
+  attack: 10
+  bulletVelocity: {x: 0, y: 0, z: 0}

@@ -7,6 +7,8 @@ public class BulletController : MonoBehaviour
     public float speed = 420.0f;
     public int predictStepPerFrame = 6;
     public int lifeTime = 5;
+    public float attack = 10;
+
     public Vector3 bulletVelocity;
     // Start is called before the first frame update
     void Start()
@@ -28,11 +30,34 @@ public class BulletController : MonoBehaviour
             Ray ray = new Ray(point1, point2 - point1);
             if( Physics.Raycast(ray, (point2 - point1).magnitude ) )
             {
-                Debug.Log("Hit");
+                // Debug.Log("Hit");
             }
             point1 = point2;
         }
         this.transform.position = point1;
+    }
+
+    //Upon collision with another GameObject, this GameObject will reverse direction
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject collider = collision.gameObject;
+
+        if( collider.CompareTag("Player") )
+        {
+            return;
+        }
+        if( collider.CompareTag("PlayerProjectile") )
+        {
+            return;
+        }
+        if( collider.CompareTag("Enemy") )
+        {
+            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
+            if (enemy != null)
+            {
+                enemy.OnDamage(attack);
+            }
+        }
     }
 
     void OnDrawGizmos()
