@@ -42,7 +42,7 @@ public class UIctrl_player : MonoBehaviour
     void Update()
     {
         
-        Debug.Log("EngineForce:"+Controller.EngineForce);
+        Debug.Log("EngineForce:" + Controller.EngineForce);
         foreach(Timer t in timers){
             float clock =  t.timer.GetRemainingTime();
             if(clock != 1.0){
@@ -51,7 +51,7 @@ public class UIctrl_player : MonoBehaviour
             }
             //Debug.Log("timer:"+t.timer.GetRemainingTime());
         }
-        info.engine.text = "Engine: "+Controller.EngineForce.ToString("F2");
+        info.engine.text = "Engine: " + Controller.EngineForce.ToString("F2");
         info.hp_bar.fillAmount = info.hp;
     }
 
