@@ -13,7 +13,7 @@ public class HealthBarUI : MonoBehaviour
 
     public bool alwaysVisible;
 
-    public float visibleTime; 
+    public float visibleTime = 3; 
     private float timeLift; 
 
     Image healthSlider;

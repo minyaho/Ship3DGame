@@ -86,10 +86,15 @@ public class BombController : MonoBehaviour
         }
         if( collider.CompareTag("Enemy") )
         {
-            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
-            if (enemy != null)
+           if (collider.transform.parent != null)
             {
-                enemy.OnDamage(attack);
+                EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(attack);
+            }
+            else
+            {
+                EnemyStats enemy = collider.transform.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(attack);
             }
         }
         OnHitTheGround();

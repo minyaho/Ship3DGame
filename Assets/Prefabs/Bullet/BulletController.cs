@@ -41,6 +41,7 @@ public class BulletController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject collider = collision.gameObject;
+        Debug.Log(collider.gameObject.name);
 
         if( collider.CompareTag("Player") )
         {
@@ -52,14 +53,20 @@ public class BulletController : MonoBehaviour
         }
         if( collider.CompareTag("Enemy") )
         {
-            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
-            if (enemy != null)
+            
+            if (collider.transform.parent != null)
             {
-                enemy.OnDamage(attack);
-                Debug.Log("AAAAAAAAaa");
+                EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(attack);
             }
+            else
+            {
+                EnemyStats enemy = collider.transform.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(attack);
+            }
+            
         }
-           Debug.Log( collision.gameObject.name );
+        //    Debug.Log( collision.gameObject.name );
     }
 
     void OnDrawGizmos()

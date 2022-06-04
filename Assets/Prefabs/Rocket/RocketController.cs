@@ -28,6 +28,9 @@ public class RocketController : MonoBehaviour
     [SerializeField] private float _maxLifeTime = 10; 
     [SerializeField] private float _explosionLifeTime = 5;
 
+    [Header("PARAMATER")]
+    [SerializeField] private float attack = 100; 
+
     private void Start()
     {
         if( _target )
@@ -80,6 +83,21 @@ public class RocketController : MonoBehaviour
         }
         if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
 
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            
+            if (collision.gameObject.transform.parent != null)
+            {
+                EnemyStats enemy = collision.gameObject.transform.parent.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(attack);
+            }
+            else
+            {
+                EnemyStats enemy = collision.gameObject.transform.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(attack);
+            }
+            
+        }
         Destroy(gameObject);
     }
 
