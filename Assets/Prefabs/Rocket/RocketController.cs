@@ -90,13 +90,20 @@ public class RocketController : MonoBehaviour
         {
             return;
         }
-        else if( collider.CompareTag("Enemy") )
+        else if(collision.gameObject.CompareTag("Enemy"))
         {
-            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
-            if (enemy != null)
+
+            if (collision.gameObject.transform.parent != null)
             {
-                enemy.OnDamage(_damage);
+                EnemyStats enemy = collision.gameObject.transform.parent.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(_damage);
             }
+            else
+            {
+                EnemyStats enemy = collision.gameObject.transform.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(_damage);
+            }
+
         }
         ExplodeEffect(transform);
         Destroy(gameObject);

@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     public float speed = 420.0f;
     public int predictStepPerFrame = 6;
     public int lifeTime = 5;
-    public float attack = 10;
+    public float _damage = 10;
 
     public Vector3 bulletVelocity;
     // Start is called before the first frame update
@@ -52,10 +52,15 @@ public class BulletController : MonoBehaviour
         }
         if( collider.CompareTag("Enemy") )
         {
-            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
-            if (enemy != null)
+
+            if (collider.transform.parent != null)
             {
-                enemy.OnDamage(attack);
+                EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(_damage);
+            }
+            else{
+                EnemyStats enemy = collider.transform.GetComponent<EnemyStats>();
+                enemy.OnDamageByPlayer(_damage);
             }
         }
         Destroy(gameObject);
