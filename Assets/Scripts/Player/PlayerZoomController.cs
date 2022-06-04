@@ -4,8 +4,7 @@ using UnityEngine;
 using Cinemachine;
 public class PlayerZoomController : MonoBehaviour
 {
-  /*  [SerializeField] private InputActionAsset inputProvider;
-    [SerializeField] private CinemachineFreeLook freeLookCameraToZoom;
+   /* [SerializeField] private CinemachineFreeLook freeLookCameraToZoom;
     [SerializeField] private float zoomSpeed = 3.0f;
     [SerializeField] private float zoomAcceleration = 2.5f;
     [SerializeField] private float zoomInnerRange = 3.0f;

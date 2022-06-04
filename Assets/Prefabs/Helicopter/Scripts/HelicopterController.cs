@@ -3,12 +3,17 @@ using UnityEngine.UI;
 
 public class HelicopterController : MonoBehaviour
 {
+    [Header("Main References")]
     public AudioSource HelicopterSound;
     public ControlPanel ControlPanel;
     public Rigidbody HelicopterModel;
+    public Light ButtomLight;
+
+    [Header("Rotor References")]
     public HeliRotorController MainRotorController;
     public HeliRotorController SubRotorController;
 
+    [Header("Parameters")]
     public float TurnForce = 4f;
     public float ForwardForce = 10f;
     public float ForwardTiltForce = 20f;
@@ -53,6 +58,9 @@ public class HelicopterController : MonoBehaviour
         LiftProcess(HelicopterModel);
         MoveProcess(HelicopterModel);
         TiltProcess(HelicopterModel);
+
+        // make light not to shin
+        ButtomLight.intensity = Mathf.Clamp(1 + transform.position.y / 80, 0.0f, 4.0f);
     }
 
     public void MoveProcess(Rigidbody rb)
