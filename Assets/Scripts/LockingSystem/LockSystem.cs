@@ -2,38 +2,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
+using UnityEditor;
 class LockSystem : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private RectTransform _crosshair;
-
+    [SerializeField] private RectTransform _missileCrosshair;
+    [SerializeField] private RectTransform _normalCrosshair;
+    [SerializeField] private TMP_Text _text;
     [SerializeField] private GameObject _aimTarget;
    
-
     [SerializeField] private LayerMask _layerMask;
+
+    [SerializeField] private AudioSource _lockingSound;
+
     // =============================================
 
-    private LockedDictionary _lockedDict;
-    private GameObject targetObject;
+    [Header("Parameters")]
+    [SerializeField] private float _lockingTime = 2;
+    private float _lockingDelay;
+    private float _pulseDelay;
+    private float _pulseTime;
 
+    // =============================================
+    private LockedDictionary _lockedDict;
+    private GameObject _lockingTarget = null;
+    private GameObject _preLockingTarget = null;
+    private GameObject _realTarget = null;
+    private RawImage _crosshiarImage;
     private void Start()
     {
+        _lockingSound.playOnAwake = false;
         _lockedDict = GetComponent<LockedDictionary>();
+        _crosshiarImage = _crosshair.gameObject.GetComponent<RawImage>();
     }
 
     private void FixedUpdate()
     {
-        RaycastTarget();
-        DrawRectTransform();
+        bool flag = Input.GetMouseButton(1);
+        _normalCrosshair.gameObject.SetActive(!flag);
+        _missileCrosshair.gameObject.SetActive(flag);
+        if( flag == true )
+        {
+            RaycastTarget();
+            DrawRectTransform();
+            CheckReady();
+        }
         checkTargetAlive();
+ 
+    }
+
+    private void CheckReady()
+    {
+        if( (_preLockingTarget == null) || _preLockingTarget.GetInstanceID().Equals(_lockingTarget?.GetInstanceID())  )
+        {
+            if(  _lockingDelay > _lockingTime )
+            {
+                _realTarget = _lockingTarget;
+                _text.text = (( _realTarget == null ) ? "" : "Target: \n" + _realTarget.gameObject.name) ;
+                _text.color = Color.green;
+                _crosshiarImage.color = Color.green;
+            }
+            else
+            {
+                LockingPules();
+                _realTarget = null;    
+                _text.text = (( _lockingTarget == null ) ? "" : "Locking Target: \n" + _lockingTarget.gameObject.name) ;     
+                _text.color = Color.red;
+                _lockingDelay += Time.fixedDeltaTime;
+                _crosshiarImage.color = Color.red;
+            }
+        }
+        else{
+            _lockingDelay = 0;
+            _realTarget = null;     
+            _text.text = "";    
+            _crosshiarImage.color = Color.red;
+        }
+        
     }
 
     private void checkTargetAlive()
     {
-        if( targetObject == null )
+        if( _lockingTarget == null )
         {
-            ResetRectTransfrom();
+            ResetSystem();
         }
     }
     private void RaycastTarget()
@@ -47,19 +101,32 @@ class LockSystem : MonoBehaviour
             {
                 for (int z = -1; z <= 1 ; z++)
                 {
-                    Ray ray = Camera.main.ScreenPointToRay( screenPoint + (new Vector3(x, y ,z) * 10) );
+                    Ray ray = Camera.main.ScreenPointToRay( screenPoint + (new Vector3(x, y ,z) * 20) );
                     RaycastHit hitInfo;
 
                     if( Physics.Raycast( ray, out hitInfo, 3000, _layerMask ) ) {
                         
                         GameObject obj = hitInfo.transform.gameObject;
-
-                        targetObject = obj;                        
+                        _preLockingTarget = _lockingTarget;
+                        _lockingTarget = obj;  
+                        return;                  
                     }
                 }
             }
         }
+    }
 
+    private void LockingPules()
+    {
+        if( _pulseDelay > _pulseTime  )
+        {
+            _pulseDelay = 0;
+            _pulseTime = Mathf.Max(((_lockingTime - _lockingDelay) / (_lockingTime * 3)), 0.05f);
+            _lockingSound.Play();
+        }
+        else{
+            _pulseDelay += Time.fixedDeltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -71,24 +138,30 @@ class LockSystem : MonoBehaviour
     {
         if( (_layerMask.value & 1 << collider.gameObject.layer ) == 1 << collider.gameObject.layer )
         {
-            targetObject = null;
-            ResetRectTransfrom();
+            _lockingTarget = null;
+            ResetSystem();
         }
     }
 
     private void DrawRectTransform()
     {
-        if( targetObject != null )
+        if( _lockingTarget != null )
         {
-            Rect visualRect = RendererBoundsInScreenSpace( targetObject.GetComponentInChildren<Collider>() );
+            Rect visualRect = RendererBoundsInScreenSpace( _lockingTarget.GetComponentInChildren<Collider>() );
 
             _crosshair.position = new Vector2( visualRect.xMin, visualRect.yMin );
 
             _crosshair.sizeDelta = new Vector2( visualRect.width, visualRect.height ); 
+
+            _text.gameObject.transform.position = new Vector2( visualRect.xMin + visualRect.width + (visualRect.width / 5), visualRect.yMin + visualRect.height - (visualRect.height / 20));
         }
     }
-    private void ResetRectTransfrom()
+    private void ResetSystem()
     {
+        _text.text = ""; 
+        _lockingDelay = 0;
+        _pulseDelay = 0;
+        _realTarget = null;
         _crosshair.sizeDelta = new Vector2(0, 0);
     }
 
@@ -141,6 +214,15 @@ class LockSystem : MonoBehaviour
 
     public GameObject GetTargetObject()
     {
-        return targetObject;
+        return _realTarget;
+    }
+
+    public GameObject GetLockingTarget()
+    {
+        return _lockingTarget;
+    }
+    public bool LockingCompleted()
+    {
+        return (_realTarget != null);
     }
 }

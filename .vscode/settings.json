@@ -1,4 +1,4 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -26,6 +26,8 @@
         "**/*.tif":true,
         "**/*.tiff":true,
         "**/*.3ds":true,
+        "**/.ogg":true,
+        "**/.mp3":true,
         "**/*.3DS":true,
         "**/*.fbx":true,
         "**/*.FBX":true,

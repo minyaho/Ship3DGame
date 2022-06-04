@@ -41,8 +41,6 @@ public class UIctrl_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Debug.Log("EngineForce:" + Controller.EngineForce);
         foreach(Timer t in timers){
             float clock =  t.timer.GetRemainingTime();
             if(clock != 1.0){

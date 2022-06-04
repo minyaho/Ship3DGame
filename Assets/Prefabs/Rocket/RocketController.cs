@@ -96,8 +96,9 @@ public class RocketController : MonoBehaviour
                 enemy.OnDamage(_damage);
             }
         }
-        ExplodeEffect(collider.transform);
+        ExplodeEffect(transform);
         Destroy(gameObject);
+        
     }
 
     private void OnDrawGizmos() {
