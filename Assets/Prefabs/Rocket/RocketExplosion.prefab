@@ -9852,7 +9852,7 @@ GameObject:
   - component: {fileID: 3585354118548864705}
   - component: {fileID: 7221642437309931900}
   - component: {fileID: 4489099992516678034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RocketExplosion
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}

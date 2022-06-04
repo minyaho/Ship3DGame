@@ -624,9 +624,9 @@ GameObject:
   - component: {fileID: 2228104203348453821}
   - component: {fileID: 2228104203348453818}
   - component: {fileID: 2228104203348453819}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -691,14 +691,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 2228104203348453821}
   _explosionPrefab: {fileID: 8799090298770338723, guid: 99980b6dee5317c4b8b7a16a92a0fe66, type: 3}
-  _speed: 60
+  _damage: 25
+  _speed: 30
   _rotateSpeed: 95
   _maxDistancePredict: 100
   _minDistancePredict: 5
   _maxTimePrediction: 5
-  _deviationAmount: 50
+  _deviationAmount: 25
   _deviationSpeed: 2
-  _maxLifeTime: 5
+  _maxLifeTime: 10
+  _explosionLifeTime: 5
 --- !u!1 &2228104203354925926
 GameObject:
   m_ObjectHideFlags: 0

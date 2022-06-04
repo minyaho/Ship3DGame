@@ -56,10 +56,9 @@ public class BulletController : MonoBehaviour
             if (enemy != null)
             {
                 enemy.OnDamage(attack);
-                Debug.Log("AAAAAAAAaa");
             }
         }
-           Debug.Log( collision.gameObject.name );
+        Destroy(gameObject);
     }
 
     void OnDrawGizmos()

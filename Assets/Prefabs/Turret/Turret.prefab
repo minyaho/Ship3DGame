@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 2056274227052227822}
   - component: {fileID: 2056274227052227820}
   - component: {fileID: 2056274227052227821}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret Collision Object
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -908,8 +908,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056274227052227823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.246, y: 0.392, z: -1.99}
-  m_LocalScale: {x: 3, y: 6, z: 3}
+  m_LocalPosition: {x: -0.25, y: 0.33, z: -1.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2056274227074197383}
   m_RootOrder: 11
@@ -925,8 +925,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.2, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.18, y: 1, z: 1}
+  m_Center: {x: 0.019068876, y: 0.00019192696, z: 0.0042534936}
 --- !u!54 &2056274227052227821
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -938,10 +938,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &2056274227074197372
 GameObject:
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 4299906646791344090}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1015,7 +1015,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056274227074197372}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 20
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   gunBarrels:
   - {fileID: 2056274226630911885}
   - {fileID: 2056274225980425079}
-  projectile: {fileID: 6749993522343704805, guid: 934e281377eb14542bcf6104bb4c039b, type: 3}
+  projectile: {fileID: 7750346673785930743, guid: 4005533952284024b9237eef938b80e1, type: 3}
   animator: {fileID: 2056274227074197371}
   rotationSpeed: 300
   aimOffset: {x: 0, y: 0.01, z: 0}

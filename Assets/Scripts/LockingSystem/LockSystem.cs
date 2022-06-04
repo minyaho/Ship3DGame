@@ -26,8 +26,16 @@ class LockSystem : MonoBehaviour
     {
         RaycastTarget();
         DrawRectTransform();
+        checkTargetAlive();
     }
 
+    private void checkTargetAlive()
+    {
+        if( targetObject == null )
+        {
+            ResetRectTransfrom();
+        }
+    }
     private void RaycastTarget()
     {
 
@@ -72,7 +80,7 @@ class LockSystem : MonoBehaviour
     {
         if( targetObject != null )
         {
-            Rect visualRect = RendererBoundsInScreenSpace( targetObject.GetComponentInChildren<Renderer>() );
+            Rect visualRect = RendererBoundsInScreenSpace( targetObject.GetComponentInChildren<Collider>() );
 
             _crosshair.position = new Vector2( visualRect.xMin, visualRect.yMin );
 
@@ -85,7 +93,7 @@ class LockSystem : MonoBehaviour
     }
 
     static Vector3[] screenSpaceCorners;
-	static Rect RendererBoundsInScreenSpace(Renderer r) {
+	static Rect RendererBoundsInScreenSpace(Collider r) {
 		// This is the space occupied by the object's visuals
 		// in WORLD space.
 		Bounds bigBounds = r.bounds;

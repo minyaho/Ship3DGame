@@ -10,6 +10,9 @@ public class RocketController : MonoBehaviour
     private Rigidbody _targetRB;
     [SerializeField] private GameObject _explosionPrefab;
 
+    [Header("BASIC")] 
+    [SerializeField] private float _damage = 25.0f;
+
     [Header("MOVEMENT")] 
     [SerializeField] private float _speed = 15;
     [SerializeField] private float _rotateSpeed = 95;
@@ -74,12 +77,27 @@ public class RocketController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if(_explosionPrefab) {
-            GameObject exlosionEffect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(exlosionEffect, _explosionLifeTime);
-        }
-        if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
+        GameObject collider = collision.gameObject;
 
+        
+        if( collider.CompareTag("Player") )
+        {
+            return;
+        }
+        else if( collider.CompareTag("PlayerProjectile") )
+        {
+            return;
+        }
+        else if( collider.CompareTag("Enemy") )
+        {
+            EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
+            if (enemy != null)
+            {
+                ExplodeEffect(collider.transform);
+                enemy.OnDamage(_damage);
+            }
+        }
+    
         Destroy(gameObject);
     }
 
@@ -102,5 +120,14 @@ public class RocketController : MonoBehaviour
     {
         yield return new WaitForSeconds(_maxLifeTime);
         Destroy( this.gameObject );
+    }
+
+    private void ExplodeEffect(Transform transform)
+    {
+        if(_explosionPrefab) {
+            GameObject exlosionEffect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(exlosionEffect, _explosionLifeTime);
+        }
+        if (transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
     }
 }
