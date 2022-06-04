@@ -14,6 +14,7 @@ public class HelicopterController : MonoBehaviour
     public float ForwardTiltForce = 20f;
     public float TurnTiltForce = 40f;
     public float EffectiveHeight = 100f;
+    public float DownForce = 0f;
 
     public float turnTiltForcePercent = 6.5f;
     public float turnForcePercent = 7.3f;
@@ -64,7 +65,7 @@ public class HelicopterController : MonoBehaviour
 
     public void LiftProcess(Rigidbody rb)
     {
-        var upForce = 1 - Mathf.Clamp(rb.transform.position.y / EffectiveHeight, 0, 1);
+        var upForce = 1 - Mathf.Clamp(rb.transform.position.y / EffectiveHeight, 0, 1) - DownForce;
         upForce = Mathf.Lerp(0f, EngineForce, upForce) * rb.mass;
         rb.AddRelativeForce(Vector3.up * upForce);
     }
@@ -78,6 +79,7 @@ public class HelicopterController : MonoBehaviour
 
     private void OnKeyPressed(PressedKeyCode[] obj)
     {
+        bool pressDown = false;
         float tempY = 0;
         float tempX = 0;
 
@@ -96,12 +98,12 @@ public class HelicopterController : MonoBehaviour
                 tempX = Time.fixedDeltaTime;
 
 
+
         foreach (var pressedKeyCode in obj)
         {
             switch (pressedKeyCode)
             {
                 case PressedKeyCode.SpeedUpPressed:
-
                     EngineForce += 0.1f;
                     break;
                 case PressedKeyCode.SpeedDownPressed:
@@ -109,35 +111,40 @@ public class HelicopterController : MonoBehaviour
                     EngineForce -= 0.12f;
                     if (EngineForce < 0) EngineForce = 0;
                     break;
-
-                    case PressedKeyCode.ForwardPressed:
-
+                case PressedKeyCode.DownPressed:
+                    if (IsOnGround) break;
+                    pressDown = true;
+                    EngineForce -= 0.35f;
+                    if (EngineForce < 0) EngineForce = 0;
+                    DownForce += 0.25f;
+                    break;
+                case PressedKeyCode.ForwardPressed:
                     if (IsOnGround) break;
                     tempY = Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.BackPressed:
+                case PressedKeyCode.BackPressed:
 
                     if (IsOnGround) break;
                     tempY = -Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.LeftPressed:
+                case PressedKeyCode.LeftPressed:
 
                     if (IsOnGround) break;
                     tempX = -Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.RightPressed:
+                case PressedKeyCode.RightPressed:
 
                     if (IsOnGround) break;
                     tempX = Time.fixedDeltaTime;
                     break;
-                    case PressedKeyCode.TurnRightPressed:
+                case PressedKeyCode.TurnRightPressed:
                     {
                         if (IsOnGround) break;
                         var force = (turnForcePercent - Mathf.Abs(hMove.y))*HelicopterModel.mass;
                         HelicopterModel.AddRelativeTorque(0f, force, 0);
                     }
                     break;
-                    case PressedKeyCode.TurnLeftPressed:
+                case PressedKeyCode.TurnLeftPressed:
                     {
                         if (IsOnGround) break;
                         
@@ -155,6 +162,10 @@ public class HelicopterController : MonoBehaviour
         hMove.y += tempY;
         hMove.y = Mathf.Clamp(hMove.y, -1, 1);
 
+        if( pressDown == false )
+        {
+            DownForce = Mathf.Max(DownForce - 0.25f, 0f);
+        }
     }
 
 

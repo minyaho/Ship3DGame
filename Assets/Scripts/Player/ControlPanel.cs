@@ -8,7 +8,9 @@ public class ControlPanel : MonoBehaviour {
     [SerializeField]
     KeyCode SpeedUp = KeyCode.Space;
     [SerializeField]
-    KeyCode SpeedDown = KeyCode.LeftControl;
+    KeyCode SpeedDown = KeyCode.LeftShift;
+    [SerializeField]
+    KeyCode Down = KeyCode.LeftControl;
     [SerializeField]
     KeyCode Forward = KeyCode.W;
     [SerializeField]
@@ -32,6 +34,7 @@ public class ControlPanel : MonoBehaviour {
         keyCodes = new[] {
                             SpeedUp,
                             SpeedDown,
+                            Down,
                             Forward,
                             Back,
                             Left,
