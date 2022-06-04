@@ -26,6 +26,8 @@ public class Turret : EnemyStats
 
     [SerializeField]
     private Animator animator;
+    [SerializeField] private AudioSource fireSound;
+
 
     [Header("Parameters")]
     [SerializeField]
@@ -45,6 +47,7 @@ public class Turret : EnemyStats
     private void Start()
     {
         base.Start();
+        fireSound.playOnAwake = false;
         DefaultRotation = rotator.rotation;
         ChangeState(new IdleState());
     }
@@ -79,6 +82,7 @@ public class Turret : EnemyStats
 
         GameObject bullet = Instantiate(projectile, GunBarrels[index].position, headingDirection);
         bullet.GetComponent<Projectile>().Direction = v;
+        fireSound.Play();
     }
     public void ChangeState(TurretState newState)
     {

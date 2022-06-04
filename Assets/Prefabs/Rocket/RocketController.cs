@@ -93,11 +93,10 @@ public class RocketController : MonoBehaviour
             EnemyStats enemy = collider.transform.parent.GetComponent<EnemyStats>();
             if (enemy != null)
             {
-                ExplodeEffect(collider.transform);
                 enemy.OnDamage(_damage);
             }
         }
-    
+        ExplodeEffect(collider.transform);
         Destroy(gameObject);
     }
 
