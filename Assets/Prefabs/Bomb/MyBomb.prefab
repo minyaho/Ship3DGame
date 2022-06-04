@@ -347,8 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a87bc3ad7b5c44f9d341636e1f7ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 8683145802441492035, guid: 724bb7613564efd4aa893ee0e714e614, type: 3}
+  explosionPrefab: {fileID: 8683145802441492035, guid: 4c65c512cc6d3bd4e9d8a4e10762f8ae, type: 3}
   explosionLifeTime: 5
   predictStepPerFrame: 12
   bomblifeTime: 30
+  attack: 100
   bombVelocity: {x: 0, y: 0, z: 0}
