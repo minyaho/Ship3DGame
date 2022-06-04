@@ -228,7 +228,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -4649,7 +4649,7 @@ GameObject:
   - component: {fileID: 993184143}
   - component: {fileID: 993184142}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: Main Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4767,6 +4767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67445341fe41838448cbbee6e54de292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 993184142}
+  _bombCamera: {fileID: 532043427}
   SpeedUp: 32
   SpeedDown: 304
   Down: 306

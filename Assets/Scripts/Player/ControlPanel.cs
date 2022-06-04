@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ControlPanel : MonoBehaviour {
     // public AudioSource MusicSound;
 
+    [Header("Camera")]
+    [SerializeField] private CinemachineVirtualCamera _mainCamera;
+    [SerializeField] private CinemachineVirtualCamera _bombCamera;
+
+    [Header("Key Binding")]
     [SerializeField]
     KeyCode SpeedUp = KeyCode.Space;
     [SerializeField]
@@ -27,6 +33,7 @@ public class ControlPanel : MonoBehaviour {
     KeyCode MusicOffOn = KeyCode.M;
     
     private KeyCode[] keyCodes;
+    
 
     public Action<PressedKeyCode[]> KeyPressed;
     private void Awake()
@@ -73,5 +80,11 @@ public class ControlPanel : MonoBehaviour {
                 MusicSound.Play();
         }*/
       
+        if( Input.GetMouseButtonDown(2) )
+        {
+            int priority = _mainCamera.m_Priority;
+            _mainCamera.m_Priority = _bombCamera.m_Priority;
+            _bombCamera.m_Priority = priority;
+        }
 	}
 }
