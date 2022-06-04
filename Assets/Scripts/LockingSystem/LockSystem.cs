@@ -17,6 +17,7 @@ class LockSystem : MonoBehaviour
 
     [SerializeField] private AudioSource _lockingSound;
 
+    [SerializeField] private AudioSource _lockingCompleteSound;
     // =============================================
 
     [Header("Parameters")]
@@ -33,6 +34,7 @@ class LockSystem : MonoBehaviour
     private RawImage _crosshiarImage;
     private void Start()
     {
+        _lockingCompleteSound.playOnAwake = false;
         _lockingSound.playOnAwake = false;
         _lockedDict = GetComponent<LockedDictionary>();
         _crosshiarImage = _crosshair.gameObject.GetComponent<RawImage>();
@@ -49,8 +51,11 @@ class LockSystem : MonoBehaviour
             DrawRectTransform();
             CheckReady();
         }
+        else
+        {
+            ResetSystem();
+        }
         checkTargetAlive();
- 
     }
 
     private void CheckReady()
@@ -59,6 +64,10 @@ class LockSystem : MonoBehaviour
         {
             if(  _lockingDelay > _lockingTime )
             {
+                if( _text.color == Color.red )
+                {
+                    _lockingCompleteSound.Play();
+                }
                 _realTarget = _lockingTarget;
                 _text.text = (( _realTarget == null ) ? "" : "Target: \n" + _realTarget.gameObject.name) ;
                 _text.color = Color.green;
@@ -94,26 +103,34 @@ class LockSystem : MonoBehaviour
     {
 
         Vector3 screenPoint = Camera.main.WorldToScreenPoint( _aimTarget.transform.position );
-
-        for (int x = -1; x <= 1 ; x++)
+        float minDistance = Mathf.Infinity;
+        GameObject closetObj = null;
+        for (int x = -3; x <= 3 ; x++)
         {
-            for (int y = -1; y <= 1 ; y++)
+            for (int y = -3; y <= 3 ; y++)
             {
-                for (int z = -1; z <= 1 ; z++)
+                for (int z = -3; z <= 3 ; z++)
                 {
-                    Ray ray = Camera.main.ScreenPointToRay( screenPoint + (new Vector3(x, y ,z) * 20) );
+                    Ray ray = Camera.main.ScreenPointToRay( screenPoint + (new Vector3(x, y ,z) * 15) );
                     RaycastHit hitInfo;
-
-                    if( Physics.Raycast( ray, out hitInfo, 3000, _layerMask ) ) {
-                        
-                        GameObject obj = hitInfo.transform.gameObject;
-                        _preLockingTarget = _lockingTarget;
-                        _lockingTarget = obj;  
-                        return;                  
+                    if( Physics.Raycast( ray, out hitInfo, 300, _layerMask ) ) {
+                        // Find closest
+                        float distance = Mathf.Abs((transform.position - hitInfo.transform.position).magnitude);
+                        if( distance < minDistance )
+                        {
+                            closetObj = hitInfo.transform.gameObject;
+                            minDistance = distance;
+                        }                
                     }
                 }
             }
         }
+        if( minDistance != Mathf.Infinity )
+        {
+            _preLockingTarget = _lockingTarget;
+            _lockingTarget = closetObj;  
+        }
+    
     }
 
     private void LockingPules()

@@ -31,11 +31,13 @@ public class RocketController : MonoBehaviour
     [SerializeField] private float _maxLifeTime = 10; 
     [SerializeField] private float _explosionLifeTime = 5;
 
+    private float _randomDeviationAmount;
     private void Start()
     {
         if( _target )
         {
             _targetRB = _target.GetComponent<Rigidbody>();
+            _randomDeviationAmount = _deviationAmount * Random.Range(-2.0f, 2.0f);
         }
         StartCoroutine(RocketLifeTimer());
     }
@@ -64,7 +66,7 @@ public class RocketController : MonoBehaviour
     private void AddDeviation(float leadTimePercentage) {
         var deviation = new Vector3(Mathf.Cos(Time.time * _deviationSpeed), 0, 0);
         
-        var predictionOffset = transform.TransformDirection(deviation) * _deviationAmount * leadTimePercentage;
+        var predictionOffset = transform.TransformDirection(deviation) * _randomDeviationAmount * leadTimePercentage;
 
         _deviatedPrediction = _standardPrediction + predictionOffset;
     }
@@ -125,7 +127,14 @@ public class RocketController : MonoBehaviour
     private void ExplodeEffect(Transform transform)
     {
         if(_explosionPrefab) {
+            // Make smoke partile still alive not destroy with flying missile
+            // change smoke partile parent
+            GameObject particle = transform.GetChild(0).gameObject;
+            particle.transform.rotation = particle.transform.parent.rotation;     // inheriten parent rotation
+            ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+            particleSystem.Stop();
             GameObject exlosionEffect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            particle.transform.parent = exlosionEffect.transform;
             Destroy(exlosionEffect, _explosionLifeTime);
         }
         if (transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
