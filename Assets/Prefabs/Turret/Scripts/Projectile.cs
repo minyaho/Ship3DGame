@@ -53,7 +53,7 @@ public class Projectile : MonoBehaviour
                 player.OnDamage(attack);
             }
             else{
-                Debug.Log("Can't find player!");
+                //Debug.Log("Can't find player!");
             }
         }
     }
