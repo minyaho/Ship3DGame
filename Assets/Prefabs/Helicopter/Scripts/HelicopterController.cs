@@ -3,14 +3,15 @@
 public class HelicopterController : MonoBehaviour
 {
     [Header("Main References")]
-    public AudioSource HelicopterSound;
-    public ControlPanel ControlPanel;
-    public Rigidbody HelicopterModel;
-    public Light ButtomLight;
+    [SerializeField] private AudioSource HelicopterSound;
+    [SerializeField] private ControlPanel ControlPanel;
+    [SerializeField] private Rigidbody HelicopterModel;
+    [SerializeField] private Light ButtomLight;
+    [SerializeField] private ParticleSystem _smoke;
 
     [Header("Rotor References")]
-    public HeliRotorController MainRotorController;
-    public HeliRotorController SubRotorController;
+    [SerializeField] private HeliRotorController MainRotorController;
+    [SerializeField] private HeliRotorController SubRotorController;
 
     [Header("Parameters")]
     public float TurnForce = 4f;
@@ -46,6 +47,7 @@ public class HelicopterController : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
+        SetSmokeRate(0);
         ControlPanel.KeyPressed += OnKeyPressed;
 	}
 
@@ -192,5 +194,11 @@ public class HelicopterController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         IsOnGround = false;
+    }
+
+    public void SetSmokeRate(int rate)
+    {
+        ParticleSystem.EmissionModule m = _smoke.emission;
+        m.rateOverTime = new ParticleSystem.MinMaxCurve(rate);
     }
 }

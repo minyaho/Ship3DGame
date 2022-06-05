@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+[RequireComponent(typeof(HelicopterController))]
 public class PlayerState : MonoBehaviour
 {
     [Header("Player Parmaters")]
@@ -19,10 +20,11 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private Transform _mainUI;
     [SerializeField] private Canvas _gameOverUI;
 
-
+    private HelicopterController _helicopterController;
     // Start is called before the first frame update
     void Start()
     {
+        _helicopterController = GetComponent<HelicopterController>();
         maxHealth = currentHealth;
     }
 
@@ -43,6 +45,7 @@ public class PlayerState : MonoBehaviour
     void Update()
     {
         HealthHandler();
+        DamageStateEffect();
     }
 
     private void OnDestory()
@@ -69,6 +72,15 @@ public class PlayerState : MonoBehaviour
         if(currentHealth <= 0) // If stats class' health var <= 0, destroy enemy object
         {     
             OnDestory();
+        }
+    }
+
+    private void DamageStateEffect()
+    {
+        float half = (maxHealth / 2) ;
+        if( currentHealth < half )
+        {
+            _helicopterController.SetSmokeRate( Mathf.RoundToInt((100 / half) * currentHealth) );
         }
     }
 }
