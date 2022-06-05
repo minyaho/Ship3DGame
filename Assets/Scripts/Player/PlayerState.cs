@@ -6,21 +6,19 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     [Header("Player Parmaters")]
-    [SerializeField]
-    public float currentHealth = 2500.0f;
-    public float maxHealth;
+    [SerializeField] public float currentHealth = 200.0f;
+    [SerializeField] public float maxHealth = 200.0f;
 
-    [SerializeField]
-    public bool canDamage = true;
+    [SerializeField] public bool canDamage = true;
 
     [Header("Explosion")]
-    [SerializeField]
-    public GameObject explosionPrefab;
-    [SerializeField]    public int explosionLifeTime = 3;
+    [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private int _explosionLifeTime = 3;
 
     [Header("UI")]
-    [SerializeField]
-    public Canvas gameOverUI;
+    [SerializeField] private Transform _mainUI;
+    [SerializeField] private Canvas _gameOverUI;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,18 +42,19 @@ public class PlayerState : MonoBehaviour
 
     private void OnDestory()
     {   
+        _mainUI.gameObject.SetActive(false);
         // Show GameOverUI
-        if(gameOverUI != null)
-            gameOverUI.gameObject.SetActive(true);
+        if(_gameOverUI != null)
+            _gameOverUI.gameObject.SetActive(true);
 
         
         Destroy(this.gameObject);
 
         // Exlosion effect
-        if (explosionPrefab)
+        if (_explosionPrefab)
         {
-            GameObject exlosionEffect = Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
-            Destroy(exlosionEffect, explosionLifeTime);
+            GameObject exlosionEffect = Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
+            Destroy(exlosionEffect, _explosionLifeTime);
         }
     }
 

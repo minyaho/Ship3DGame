@@ -21,7 +21,9 @@ public class Stats{
 }
 public class UIctrl_player : MonoBehaviour
 {
-    [SerializeField] private HelicopterController Controller;
+    [SerializeField] private HelicopterController _controller;
+
+    [SerializeField] private PlayerState _playerState;
     [SerializeField] private Timer[] timers;
 
     [SerializeField] private Stats info;
@@ -54,8 +56,8 @@ public class UIctrl_player : MonoBehaviour
             }
             //Debug.Log("timer:"+t.timer.GetRemainingTime());
         }
-        info.engine.text = "Engine: " + Controller.EngineForce.ToString("F2");
-        info.hp_bar.fillAmount = info.hp;
+        info.engine.text = "Engine: " + _controller.EngineForce.ToString("F2");
+        info.hp_bar.fillAmount = _playerState.currentHealth * (1.0f / _playerState.maxHealth);
     }
 
 
