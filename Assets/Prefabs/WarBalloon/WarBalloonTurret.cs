@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarBalloonTurret : EnemyStats
+public class WarBalloonTurret : MonoBehaviour
 {
     protected WarBalloonTurretState currentState;
 
@@ -38,7 +38,7 @@ public class WarBalloonTurret : EnemyStats
 
     private void Start()
     {
-        base.Start();
+        // base.Start();
         fireSound.playOnAwake = false;
         DefaultRotation = rotator.rotation;
         ChangeState(new WarBalloonIdleState());
@@ -47,7 +47,7 @@ public class WarBalloonTurret : EnemyStats
     private void Update()
     {
         currentState.Update();
-        base.Update();
+        // base.Update();
     }
 
     public bool CanSeeTarget(Vector3 direction, Vector3 origin, string tag)

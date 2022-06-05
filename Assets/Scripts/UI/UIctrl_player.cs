@@ -57,8 +57,7 @@ public class UIctrl_player : MonoBehaviour
             //Debug.Log("timer:"+t.timer.GetRemainingTime());
         }
         info.engine.text = "Engine: " + _controller.EngineForce.ToString("F2");
+        info.score_board.text = "Score:" + EnemyStats.enemyPlayerDestoryNumer.ToString();
         info.hp_bar.fillAmount = _playerState.currentHealth * (1.0f / _playerState.maxHealth);
     }
-
-
 }

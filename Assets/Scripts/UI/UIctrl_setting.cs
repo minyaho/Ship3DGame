@@ -18,7 +18,8 @@ public class UIctrl_setting : MonoBehaviour
         slider1.onValueChanged.AddListener(delegate {BGMChange(); });
         slider2.onValueChanged.AddListener(delegate {effectChange(); });
         d_Dropdown.onValueChanged.AddListener(delegate {difficultyChanged(d_Dropdown);});
-        FindObjectOfType<setting_stat>().difficulty = .5f;
+        // FindObjectOfType<setting_stat>().difficulty = .5f;
+        setting_stat.difficulty = 0.0f;
     }
 
     // Update is called once per frame
@@ -59,15 +60,18 @@ public class UIctrl_setting : MonoBehaviour
     }
     public void difficultyChanged(Dropdown change){
         if(change.value ==0){
-            FindObjectOfType<setting_stat>().difficulty = 1.0f;
+            // FindObjectOfType<setting_stat>().difficulty = 1.0f;
+            setting_stat.difficulty = 0.5f;
         }
         else if(change.value ==1){
-            FindObjectOfType<setting_stat>().difficulty = 0.5f;
+            // FindObjectOfType<setting_stat>().difficulty = 0.5f;
+            setting_stat.difficulty = 0.0f;
         }
         else if(change.value ==2){
-            FindObjectOfType<setting_stat>().difficulty = 0.0f;
+            // FindObjectOfType<setting_stat>().difficulty = 0.0f;
+            setting_stat.difficulty = -0.5f;
         }
-        Debug.Log(FindObjectOfType<setting_stat>().difficulty);
+        Debug.Log(setting_stat.difficulty);
 
     }
 }

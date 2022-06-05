@@ -44,7 +44,7 @@ public class Turret : EnemyStats
     public Transform[] GunBarrels { get => gunBarrels; set => gunBarrels = value; }
     public Animator Animator { get => animator; set => animator = value; }
 
-    private void Start()
+    new private void Start()
     {
         base.Start();
         fireSound.playOnAwake = false;
@@ -52,7 +52,7 @@ public class Turret : EnemyStats
         ChangeState(new IdleState());
     }
 
-    private void Update()
+    new private void Update()
     {
         currentState.Update();
         base.Update();
