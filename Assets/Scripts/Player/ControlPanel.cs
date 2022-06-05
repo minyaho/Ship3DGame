@@ -56,6 +56,15 @@ public class ControlPanel : MonoBehaviour {
 	
 	}
 
+    void Update()
+    {
+        if( Input.GetMouseButtonDown(2) )
+        {
+            int priority = _mainCamera.m_Priority;
+            _mainCamera.m_Priority = _bombCamera.m_Priority;
+            _bombCamera.m_Priority = priority;
+        }
+    }
 	void FixedUpdate ()
 	{
 	    var pressedKeyCode = new List<PressedKeyCode>();
@@ -79,12 +88,6 @@ public class ControlPanel : MonoBehaviour {
                 MusicSound.volume = 1;
                 MusicSound.Play();
         }*/
-      
-        if( Input.GetMouseButtonDown(2) )
-        {
-            int priority = _mainCamera.m_Priority;
-            _mainCamera.m_Priority = _bombCamera.m_Priority;
-            _bombCamera.m_Priority = priority;
-        }
+
 	}
 }

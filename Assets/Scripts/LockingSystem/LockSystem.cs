@@ -14,7 +14,7 @@ class LockSystem : MonoBehaviour
     [SerializeField] private GameObject _aimTarget;
    
     [SerializeField] private LayerMask _layerMask;
-
+    [SerializeField] private LayerMask _targetLayerMask;
     [SerializeField] private AudioSource _lockingSound;
 
     [SerializeField] private AudioSource _lockingCompleteSound;
@@ -27,7 +27,6 @@ class LockSystem : MonoBehaviour
     private float _pulseTime;
 
     // =============================================
-    private LockedDictionary _lockedDict;
     private GameObject _lockingTarget = null;
     private GameObject _preLockingTarget = null;
     private GameObject _realTarget = null;
@@ -36,7 +35,6 @@ class LockSystem : MonoBehaviour
     {
         _lockingCompleteSound.playOnAwake = false;
         _lockingSound.playOnAwake = false;
-        _lockedDict = GetComponent<LockedDictionary>();
         _crosshiarImage = _crosshair.gameObject.GetComponent<RawImage>();
     }
 
@@ -114,13 +112,16 @@ class LockSystem : MonoBehaviour
                     Ray ray = Camera.main.ScreenPointToRay( screenPoint + (new Vector3(x, y ,z) * 15) );
                     RaycastHit hitInfo;
                     if( Physics.Raycast( ray, out hitInfo, 300, _layerMask ) ) {
-                        // Find closest
-                        float distance = Mathf.Abs((transform.position - hitInfo.transform.position).magnitude);
-                        if( distance < minDistance )
+                        if( CheckRayCastLayer(hitInfo.transform) )
                         {
-                            closetObj = hitInfo.transform.gameObject;
-                            minDistance = distance;
-                        }                
+                            // Find closest
+                            float distance = Mathf.Abs((transform.position - hitInfo.transform.position).magnitude);
+                            if( distance < minDistance )
+                            {
+                                closetObj = hitInfo.transform.gameObject;
+                                minDistance = distance;
+                            }   
+                        }
                     }
                 }
             }
@@ -131,6 +132,11 @@ class LockSystem : MonoBehaviour
             _lockingTarget = closetObj;  
         }
     
+    }
+
+    private bool CheckRayCastLayer(Transform transform)
+    {
+        return ((_targetLayerMask.value & 1 << transform.gameObject.layer ) == 1 << transform.gameObject.layer);
     }
 
     private void LockingPules()
@@ -153,7 +159,7 @@ class LockSystem : MonoBehaviour
 
     private void OnTriggerExit(Collider collider)
     {
-        if( (_layerMask.value & 1 << collider.gameObject.layer ) == 1 << collider.gameObject.layer )
+        if( CheckRayCastLayer(collider.transform) )
         {
             _lockingTarget = null;
             ResetSystem();
