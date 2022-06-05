@@ -45,7 +45,12 @@ public class SimpleTimer : MonoBehaviour
     /// </summary>
     public float GetRemainingTime()
     {
-        return remainingTime;
+        return (remainingTime == coolDownAmount) ? 0 : remainingTime;
+    }
+    
+    public float GetTimer()
+    {
+        return coolDownAmount;
     }
     private void SetCoolDown()
     {

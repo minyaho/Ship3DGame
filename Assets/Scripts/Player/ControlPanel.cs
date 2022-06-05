@@ -34,7 +34,10 @@ public class ControlPanel : MonoBehaviour {
     
     private KeyCode[] keyCodes;
     
-
+    [Header("System Mode")]
+    [SerializeField] private LockSystem _lockSystem;
+    [SerializeField] private RectTransform _normalCrosshair;
+    private bool BombingMode = false;
     public Action<PressedKeyCode[]> KeyPressed;
     private void Awake()
     {
@@ -58,12 +61,24 @@ public class ControlPanel : MonoBehaviour {
 
     void Update()
     {
-        if( Input.GetMouseButtonDown(2) )
+        if( Input.GetMouseButtonDown(2) && _lockSystem.Enable == false )
         {
+            BombingMode = !BombingMode;
             int priority = _mainCamera.m_Priority;
             _mainCamera.m_Priority = _bombCamera.m_Priority;
             _bombCamera.m_Priority = priority;
         }
+        else if( Input.GetMouseButton(1) && BombingMode == false )
+        {
+            _lockSystem.Enable = true;
+        }
+        else
+        {
+           
+            _lockSystem.Enable = false;
+        }
+
+        _normalCrosshair.gameObject.SetActive( !(_lockSystem.Enable || BombingMode) );
     }
 	void FixedUpdate ()
 	{

@@ -9,7 +9,6 @@ class LockSystem : MonoBehaviour
     [Header("References")]
     [SerializeField] private RectTransform _crosshair;
     [SerializeField] private RectTransform _missileCrosshair;
-    [SerializeField] private RectTransform _normalCrosshair;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private GameObject _aimTarget;
    
@@ -31,6 +30,9 @@ class LockSystem : MonoBehaviour
     private GameObject _preLockingTarget = null;
     private GameObject _realTarget = null;
     private RawImage _crosshiarImage;
+
+    // =============================================
+    public bool Enable = false;
     private void Start()
     {
         _lockingCompleteSound.playOnAwake = false;
@@ -40,10 +42,8 @@ class LockSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool flag = Input.GetMouseButton(1);
-        _normalCrosshair.gameObject.SetActive(!flag);
-        _missileCrosshair.gameObject.SetActive(flag);
-        if( flag == true )
+        _missileCrosshair.gameObject.SetActive(Enable);
+        if( Enable )
         {
             RaycastTarget();
             DrawRectTransform();

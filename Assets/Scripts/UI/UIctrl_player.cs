@@ -31,7 +31,7 @@ public class UIctrl_player : MonoBehaviour
     {
         //cooldown_bomb.gameObject.SetActive(false);
         foreach(Timer t in timers){
-            t.cooldown.gameObject.SetActive(false);
+            //t.cooldown.gameObject.SetActive(false);
             t.cooldown.fillAmount = 0.0f;
         }
         info.score = 0;
@@ -43,9 +43,14 @@ public class UIctrl_player : MonoBehaviour
     {
         foreach(Timer t in timers){
             float clock =  t.timer.GetRemainingTime();
-            if(clock != 1.0){
+            float maxClock =  t.timer.GetTimer();
+            if(clock > 0.0f){
                 t.cooldown.gameObject.SetActive(true);
-                t.cooldown.fillAmount = clock;
+                t.cooldown.fillAmount = clock * (1.0f / maxClock);
+            }
+            else
+            {
+                t.cooldown.fillAmount = 0.0f;
             }
             //Debug.Log("timer:"+t.timer.GetRemainingTime());
         }
