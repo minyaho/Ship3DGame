@@ -34,6 +34,11 @@ public class PlayerState : MonoBehaviour
         // Code Here
     }
 
+    public void OnHealing(float value)
+    {
+        currentHealth = Mathf.Min(currentHealth + value, maxHealth);
+    }
+
     // Update is called once per frame
     void Update()
     {

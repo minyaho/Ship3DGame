@@ -1,0 +1,11 @@
+Model Information:
+* title:	Repair Kits
+* source:	https://sketchfab.com/3d-models/repair-kits-6b99e69456574a1fafd3a2cb2bfb7283
+* author:	hoangyenbk2610 (https://sketchfab.com/hoangyenbk2610)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Repair Kits" (https://sketchfab.com/3d-models/repair-kits-6b99e69456574a1fafd3a2cb2bfb7283) by hoangyenbk2610 (https://sketchfab.com/hoangyenbk2610) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
