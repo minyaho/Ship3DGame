@@ -68,10 +68,10 @@ public class HelicopterController : MonoBehaviour
     {
         if( Crash == true )
         {
-            hMove.x += Time.fixedDeltaTime * 1.6f;
+            hMove.x += Time.fixedDeltaTime * 1.6f * (crashX ? 1 : -1);
             hMove.x = Mathf.Clamp(hMove.x, -1, 1);
 
-            hMove.y += Time.fixedDeltaTime * 1.6f;
+            hMove.y += Time.fixedDeltaTime * 1.6f * (crashY ? 1 : -1);
             hMove.y = Mathf.Clamp(hMove.y, -1, 1);
             EngineForce = Mathf.Max(EngineForce - 0.24f, 0.0f);
         }
