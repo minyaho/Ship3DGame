@@ -11,14 +11,14 @@ public class WarBalloon : EnemyStats
     private Rigidbody rb;
      private Vector2 hMove = Vector2.zero;
     private Vector2 hTilt = Vector2.zero;
-    private void Start()
+    new private void Start()
     {
         base.Start();
         rb = GetComponent<Rigidbody>();
         StartCoroutine( StableRotaion() );
     }   
 
-    private void Update()
+    new private void Update()
     {
         base.Update();
         hMove.x = transform.rotation.x;

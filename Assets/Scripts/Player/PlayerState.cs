@@ -15,6 +15,7 @@ public class PlayerState : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Transform _mainUI;
     [SerializeField] private Canvas _gameOverUI;
+    [SerializeField] private GameObject _gameOverObject;
 
     private HelicopterController _helicopterController;
     // Start is called before the first frame update
@@ -27,9 +28,16 @@ public class PlayerState : MonoBehaviour
     public void OnDamage(float attackValue)
     {
         if(canDamage)
-            currentHealth -= attackValue;
-        // Upadate Player's Health Bar UI
-        // Code Here
+        {
+            if(setting_stat.difficulty != null)
+            {
+                currentHealth -= attackValue*(1 + setting_stat.difficulty);
+            }
+            else
+            {
+                currentHealth -= attackValue;
+            }
+        }
     }
 
     public void OnHealing(float value)
@@ -50,6 +58,8 @@ public class PlayerState : MonoBehaviour
         // Show GameOverUI
         if(_gameOverUI != null)
             _gameOverUI.gameObject.SetActive(true);
+        if(_gameOverObject != null)
+            _gameOverObject.SetActive(true);
     }
 
     private void HealthHandler()

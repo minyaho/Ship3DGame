@@ -20,6 +20,10 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField]
     private int createMinTime = 10;
     [SerializeField]
+    private bool destroyByTimer = false;
+    [SerializeField]
+    private int destroyTime = 0;
+    [SerializeField]
     private Vector3 spawnMax;
     [SerializeField]
     private Vector3 spawnMin;
@@ -70,12 +74,12 @@ public class SpawnEnemy : MonoBehaviour
             }
         
             currentTimer = Random.Range(createMinTime, createMaxTime);
-            GameObject enemy = Instantiate(spawnEnemyPrefab);
-            enemy.transform.position = spawnPosition;
+            GameObject gameObject = Instantiate(spawnEnemyPrefab);
+            gameObject.transform.position = spawnPosition;
 
             // Set FlyBomb
-            if(enemy.GetComponent<FlyBomb>() != null){
-                FlyBomb flyBomb = enemy.GetComponent<FlyBomb>();
+            if(gameObject.GetComponent<FlyBomb>() != null){
+                FlyBomb flyBomb = gameObject.GetComponent<FlyBomb>();
                 switch(gameMode){
                     case GameMode.EnemyFindPlayer:
                         flyBomb.gameMode = FlyBomb.GameMode.EnemyFindPlayer;
@@ -86,6 +90,20 @@ public class SpawnEnemy : MonoBehaviour
                         flyBomb.fallMode = FlyBomb.FallMode.EnemyFallFromSky;
                         break;
                 }
+            }
+
+            // Set Enemy
+            if (gameObject.GetComponent<EnemyStats>() != null){
+                EnemyStats enemy = gameObject.GetComponent<EnemyStats>();
+
+                if(destroyByTimer)
+                {
+                    enemy.OnDestoryByTimer(destroyTime);
+                }
+            }
+            else    // Set Other
+            {
+                Destroy(gameObject, destroyTime);
             }
         }
     }
