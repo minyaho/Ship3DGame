@@ -16,6 +16,7 @@ public class BombingController : MonoBehaviour
 
     private bool bombReady = false;
     private Rigidbody helicopter;
+    public bool AllowUserControl {get; set;} = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class BombingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( bombReady && Input.GetKeyDown( KeyCode.Z ) )
+        if( bombReady && Input.GetKeyDown( KeyCode.Z ) && AllowUserControl )
         {
             Bombing();
         }

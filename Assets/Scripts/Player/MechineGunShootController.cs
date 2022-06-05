@@ -22,6 +22,7 @@ public class MechineGunShootController : MonoBehaviour
     private float warmDelay;  
     private float shootDelay;
 
+    public bool AllowUserControl {get; set;} = true;
     void Start()
     {
         warmDelay = maxWarmDelay;
@@ -29,8 +30,7 @@ public class MechineGunShootController : MonoBehaviour
     }
     void Update()
     {
-        
-        if( Input.GetMouseButton( 0 ) )
+        if( Input.GetMouseButton( 0 ) && AllowUserControl )
         {
             if( (warmDelay -= Time.deltaTime) <= 0 ){
                 if ( (shootDelay -= Time.deltaTime) <= 0) 

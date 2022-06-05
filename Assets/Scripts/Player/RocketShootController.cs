@@ -10,6 +10,7 @@ public class RocketShootController : MonoBehaviour
     [SerializeField] private LockSystem _lockSystem;
     private RocketSpawner[] _rocketSpawnList;
 
+    public bool AllowUserControl {get; set;} = true;
     void Start()
     {
         _rocketSpawnList = _rocketSpawnerParent.GetComponentsInChildren<RocketSpawner>();
@@ -18,7 +19,7 @@ public class RocketShootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKeyDown( KeyCode.X ) )
+        if( Input.GetKeyDown( KeyCode.X ) && AllowUserControl )
         {
             foreach( RocketSpawner spawner in _rocketSpawnList )
             {

@@ -39,6 +39,8 @@ public class ControlPanel : MonoBehaviour {
     [SerializeField] private RectTransform _normalCrosshair;
     private bool BombingMode = false;
     public Action<PressedKeyCode[]> KeyPressed;
+
+    public bool AllowUserControl {get; set;} = true;
     private void Awake()
     {
         keyCodes = new[] {
@@ -61,6 +63,13 @@ public class ControlPanel : MonoBehaviour {
 
     void Update()
     {
+        // 不接受任何輸入
+        if( AllowUserControl == false )
+        {
+            return;
+        }
+
+        // 切換到轟炸
         if( Input.GetMouseButtonDown(2) && _lockSystem.Enable == false )
         {
             BombingMode = !BombingMode;
@@ -68,13 +77,13 @@ public class ControlPanel : MonoBehaviour {
             _mainCamera.m_Priority = _bombCamera.m_Priority;
             _bombCamera.m_Priority = priority;
         }
+        // 切換到火箭
         else if( Input.GetMouseButton(1) && BombingMode == false )
         {
             _lockSystem.Enable = true;
         }
         else
         {
-           
             _lockSystem.Enable = false;
         }
 

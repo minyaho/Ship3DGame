@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(PlayerState))]
 public class HelicopterController : MonoBehaviour
 {
     [Header("Main References")]
     [SerializeField] private AudioSource HelicopterSound;
+    [SerializeField] private AudioSource CrashSound;
     [SerializeField] private ControlPanel ControlPanel;
     [SerializeField] private Rigidbody HelicopterModel;
     [SerializeField] private Light ButtomLight;
@@ -23,6 +25,12 @@ public class HelicopterController : MonoBehaviour
 
     public float turnTiltForcePercent = 6.5f;
     public float turnForcePercent = 7.3f;
+
+    [SerializeField] private bool Crash = false;
+
+    [Header("Explosion")]
+    [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private int _explosionLifeTime = 3;
 
     private float _engineForce;
     public float EngineForce
@@ -45,6 +53,8 @@ public class HelicopterController : MonoBehaviour
     private float hTurn = 0f;
     public bool IsOnGround = true;
     // Use this for initialization
+
+    private bool crashX, crashY;
 	void Start ()
 	{
         SetSmokeRate(0);
@@ -56,9 +66,20 @@ public class HelicopterController : MonoBehaviour
   
     void FixedUpdate()
     {
+        if( Crash == true )
+        {
+            hMove.x += Time.fixedDeltaTime * 1.6f;
+            hMove.x = Mathf.Clamp(hMove.x, -1, 1);
+
+            hMove.y += Time.fixedDeltaTime * 1.6f;
+            hMove.y = Mathf.Clamp(hMove.y, -1, 1);
+            EngineForce = Mathf.Max(EngineForce - 0.24f, 0.0f);
+        }
         LiftProcess(HelicopterModel);
         MoveProcess(HelicopterModel);
         TiltProcess(HelicopterModel);
+      
+
 
         // make light not to shin
         ButtomLight.intensity = Mathf.Clamp(1 + transform.position.y / 80, 0.0f, 4.0f);
@@ -183,6 +204,19 @@ public class HelicopterController : MonoBehaviour
         if( collision.gameObject.CompareTag("Terrain") )
         {
             IsOnGround = true;
+
+            if( Crash == true )
+            {
+                // Exlosion effect
+                if (_explosionPrefab)
+                {
+                    GameObject exlosionEffect = Instantiate(_explosionPrefab, this.transform.position, new Quaternion());
+                    Destroy(exlosionEffect, _explosionLifeTime);
+                }
+                Destroy(this.gameObject);
+                Destroy(ControlPanel.gameObject);
+                GetComponent<PlayerState>().OnDestory();
+            }
         }
 
     }
@@ -200,5 +234,21 @@ public class HelicopterController : MonoBehaviour
     {
         ParticleSystem.EmissionModule m = _smoke.emission;
         m.rateOverTime = new ParticleSystem.MinMaxCurve(rate);
+    }
+
+    public void SetCrash()
+    {
+        if( Crash == false )
+        {
+            crashX = (Random.Range(-4, 5) & 1) == 0;
+            crashY = (Random.Range(-4, 5) & 1) == 0;
+            Crash = true;
+            ControlPanel.AllowUserControl = false;
+            GetComponent<BombingController>().AllowUserControl = false;
+            GetComponent<RocketShootController>().AllowUserControl = false;
+            GetComponent<MechineGunShootController>().AllowUserControl = false;
+            CrashSound.playOnAwake = true;
+            CrashSound.Play();
+        }
     }
 }

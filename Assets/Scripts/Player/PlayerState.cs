@@ -12,10 +12,6 @@ public class PlayerState : MonoBehaviour
 
     [SerializeField] public bool canDamage = true;
 
-    [Header("Explosion")]
-    [SerializeField] private GameObject _explosionPrefab;
-    [SerializeField] private int _explosionLifeTime = 3;
-
     [Header("UI")]
     [SerializeField] private Transform _mainUI;
     [SerializeField] private Canvas _gameOverUI;
@@ -48,22 +44,12 @@ public class PlayerState : MonoBehaviour
         DamageStateEffect();
     }
 
-    private void OnDestory()
+    public void OnDestory()
     {   
         _mainUI.gameObject.SetActive(false);
         // Show GameOverUI
         if(_gameOverUI != null)
             _gameOverUI.gameObject.SetActive(true);
-
-        
-        Destroy(this.gameObject);
-
-        // Exlosion effect
-        if (_explosionPrefab)
-        {
-            GameObject exlosionEffect = Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
-            Destroy(exlosionEffect, _explosionLifeTime);
-        }
     }
 
     private void HealthHandler()
@@ -71,7 +57,7 @@ public class PlayerState : MonoBehaviour
         // Debug.Log("Here");
         if(currentHealth <= 0) // If stats class' health var <= 0, destroy enemy object
         {     
-            OnDestory();
+            _helicopterController.SetCrash();
         }
     }
 
