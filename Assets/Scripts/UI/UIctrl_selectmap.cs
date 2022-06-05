@@ -29,14 +29,14 @@ public class UIctrl_selectmap : MonoBehaviour
     }
     private void loadmap1(){
         Debug.Log("[Log] map");
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Environment");
     }
     private void loadmap2(){
         Debug.Log("[Log] map");
-        SceneManager.LoadScene("map2");
+        SceneManager.LoadScene("NightEnvironment");
     }
     private void loadmap3(){
         Debug.Log("[Log] map");
-        SceneManager.LoadScene("map3");
+        SceneManager.LoadScene("Tutorial");
     }
 }
