@@ -894,7 +894,7 @@ MonoBehaviour:
   _maxTimePrediction: 5
   _deviationAmount: 25
   _deviationSpeed: 2
-  _maxLifeTime: 10
+  _maxLifeTime: 6.4
   _explosionLifeTime: 5
 --- !u!1 &2228104203354925926
 GameObject:

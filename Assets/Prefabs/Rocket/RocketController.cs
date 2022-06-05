@@ -128,6 +128,7 @@ public class RocketController : MonoBehaviour
     IEnumerator RocketLifeTimer()
     {
         yield return new WaitForSeconds(_maxLifeTime);
+        ExplodeEffect(transform);
         Destroy( this.gameObject );
     }
 

@@ -7,11 +7,10 @@ public class EnemyStats : MonoBehaviour
 {
     public event Action<float, float> UpdateHealthBarOnAttack; // HeathBarUI will use it.
 
-    public float maxHealth; // Please don't set the value, it will auto set.
+    private float _maxHealth; // Please don't set the value, it will auto set.
 
     [Header("Enemy Parmaters")]
-    [SerializeField]
-    public float currentHealth = 100.0f;
+    [SerializeField] public float currentHealth = 100.0f;
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
@@ -26,7 +25,7 @@ public class EnemyStats : MonoBehaviour
     public void Start()
     {
         enemyLiftNumber += 1;
-        maxHealth = currentHealth;
+        _maxHealth = currentHealth;
     }
 
     // Update is called once per frame
@@ -35,10 +34,15 @@ public class EnemyStats : MonoBehaviour
         HealthHandler(); // Handle the Health
     }
 
+    public float Get_maxHealth()
+    {
+        return _maxHealth;
+    }
+
     public void OnDamageByPlayer(float attackValue) // If damage by player, please use it.
     {
         currentHealth -= attackValue;
-        UpdateHealthBarOnAttack?.Invoke(currentHealth, maxHealth);
+        UpdateHealthBarOnAttack?.Invoke(currentHealth, _maxHealth);
 
         if(currentHealth <= 0){
             enemyPlayerDestoryNumer += 1;
@@ -48,7 +52,7 @@ public class EnemyStats : MonoBehaviour
     {
         Destroy(this.gameObject);
         currentHealth -= attackValue;
-        UpdateHealthBarOnAttack?.Invoke(currentHealth, maxHealth);
+        UpdateHealthBarOnAttack?.Invoke(currentHealth, _maxHealth);
     }
     public void OnDestory()
     {
