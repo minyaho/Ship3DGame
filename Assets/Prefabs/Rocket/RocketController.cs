@@ -139,7 +139,8 @@ public class RocketController : MonoBehaviour
             GameObject particle = transform.GetChild(0).gameObject;
             particle.transform.rotation = particle.transform.parent.rotation;     // inheriten parent rotation
             ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
-            particleSystem.Stop();
+            if( particleSystem )
+                particleSystem.Stop();
             GameObject exlosionEffect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             particle.transform.parent = exlosionEffect.transform;
             Destroy(exlosionEffect, _explosionLifeTime);
