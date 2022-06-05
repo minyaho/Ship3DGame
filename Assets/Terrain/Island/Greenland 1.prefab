@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4751398865460646400
+--- !u!1 &4976903480499046613
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9103371760333432554}
-  - component: {fileID: 5766916880124118257}
-  - component: {fileID: 4125753726699190248}
+  - component: {fileID: 4251171627415799294}
+  - component: {fileID: 149960808996253624}
+  - component: {fileID: 7917178364683187958}
   m_Layer: 0
-  m_Name: Island 2 trees_Colour Palette_0
+  m_Name: Houses_Colour Palette_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9103371760333432554
+--- !u!4 &4251171627415799294
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4751398865460646400}
+  m_GameObject: {fileID: 4976903480499046613}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1297251674722471969}
+  m_Father: {fileID: 2736903212209451227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5766916880124118257
+--- !u!33 &149960808996253624
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4751398865460646400}
-  m_Mesh: {fileID: 4300000, guid: 10fabafb35a4210409f49ab5f3ba84b4, type: 2}
---- !u!23 &4125753726699190248
+  m_GameObject: {fileID: 4976903480499046613}
+  m_Mesh: {fileID: 4300000, guid: 6b4b388a1333a7845a532665e21d2d2e, type: 2}
+--- !u!23 &7917178364683187958
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4751398865460646400}
+  m_GameObject: {fileID: 4976903480499046613}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6057852024417482291
+--- !u!1 &5110324841232695156
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,78 +89,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1297251674722471969}
+  - component: {fileID: 8237932928293985069}
+  - component: {fileID: 589810234956505062}
+  - component: {fileID: 5324220165086935461}
+  - component: {fileID: 1030214355191228351}
+  - component: {fileID: 4138719663225228866}
   m_Layer: 0
-  m_Name: Island 2 trees
+  m_Name: Greenland Close_Colour Palette_0
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1297251674722471969
+--- !u!4 &8237932928293985069
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6057852024417482291}
-  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_GameObject: {fileID: 5110324841232695156}
+  m_LocalRotation: {x: -0.3303662, y: -0.08852131, z: 0.24321032, w: -0.90767336}
+  m_LocalPosition: {x: -2836, y: -3763, z: -3157}
+  m_LocalScale: {x: 100, y: 100.00002, z: 100.00003}
   m_Children:
-  - {fileID: 9103371760333432554}
-  m_Father: {fileID: 3937779828599213898}
+  - {fileID: 2736903212209451227}
+  m_Father: {fileID: 2920944937869692587}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7158999541441381996
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5565032506919833757}
-  - component: {fileID: 6135401346408939921}
-  - component: {fileID: 7354610872833509123}
-  - component: {fileID: 3288249455755994781}
-  - component: {fileID: 577875933173954626}
-  m_Layer: 0
-  m_Name: Island 6_Colour Palette_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5565032506919833757
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7158999541441381996}
-  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 3937779828599213898}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6135401346408939921
+--- !u!33 &589810234956505062
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7158999541441381996}
-  m_Mesh: {fileID: 4300000, guid: 48fcfedb9fe77b3438e5165e938fe73b, type: 2}
---- !u!23 &7354610872833509123
+  m_GameObject: {fileID: 5110324841232695156}
+  m_Mesh: {fileID: 4300000, guid: f7be56d9c410ddf4c8e940e19d416a25, type: 2}
+--- !u!23 &5324220165086935461
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7158999541441381996}
+  m_GameObject: {fileID: 5110324841232695156}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -195,13 +165,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &3288249455755994781
+--- !u!54 &1030214355191228351
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7158999541441381996}
+  m_GameObject: {fileID: 5110324841232695156}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -211,21 +181,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &577875933173954626
+--- !u!64 &4138719663225228866
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7158999541441381996}
+  m_GameObject: {fileID: 5110324841232695156}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 48fcfedb9fe77b3438e5165e938fe73b, type: 2}
---- !u!1 &8438994369563857672
+  m_Mesh: {fileID: 4300000, guid: f7be56d9c410ddf4c8e940e19d416a25, type: 2}
+--- !u!1 &6831332329051332783
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,27 +203,88 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3937779828599213898}
+  - component: {fileID: 2920944937869692587}
   m_Layer: 0
-  m_Name: Island 6
+  m_Name: Greenland (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3937779828599213898
+--- !u!4 &2920944937869692587
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8438994369563857672}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: -0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_GameObject: {fileID: 6831332329051332783}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 190.6001, y: 22.883247, z: 146.3415}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.020000005}
   m_Children:
-  - {fileID: 1297251674722471969}
-  - {fileID: 5565032506919833757}
+  - {fileID: 8237932928293985069}
+  m_Father: {fileID: 8299716275633453474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8558577157828461589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8299716275633453474}
+  m_Layer: 0
+  m_Name: Greenland 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8299716275633453474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558577157828461589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.400093, y: -52.025215, z: -8.241501}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2920944937869692587}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8729952060791588385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2736903212209451227}
+  m_Layer: 0
+  m_Name: Houses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2736903212209451227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729952060791588385}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0000000055879354, w: -1}
+  m_LocalPosition: {x: 1.21, y: 0.08, z: -0.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4251171627415799294}
+  m_Father: {fileID: 8237932928293985069}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
