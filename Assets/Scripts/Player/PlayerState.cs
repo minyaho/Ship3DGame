@@ -62,6 +62,7 @@ public class PlayerState : MonoBehaviour
 
     public void OnDestory()
     {   
+        setEnemyInfoZero();
         _mainUI.gameObject.SetActive(false);
         // Show GameOverUI
         if(_gameOverUI != null)
@@ -69,6 +70,19 @@ public class PlayerState : MonoBehaviour
         if(_gameOverObject != null)
             _gameOverObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    private void setEnemyInfoZero()
+    {
+        EnemyInfo.enemyLifeNumber = 0;
+        EnemyInfo.enemyPlayerDestoryNumer = 0;
+        EnemyInfo.turretLifeNumber = 0;
+
+        EnemyInfo.destoryFlyBombNumber = 0;
+        EnemyInfo.destoryWarBalloonNumber = 0;
+        EnemyInfo.destoryTurretNumber = 0;
+
+        EnemyInfo.enemyPlayerGetScore = 0;
     }
 
     private void HealthHandler()
