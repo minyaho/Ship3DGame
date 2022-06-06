@@ -78,10 +78,14 @@ public class EnemyStats : MonoBehaviour
     public void OnDestory()
     {
         if(explosionPrefab){
-            GameObject exlosionEffect = Instantiate(explosionPrefab, transform.position, transform.rotation);
+            GameObject exlosionEffect;
+            if(gameObject.GetComponent<Turret>())
+                exlosionEffect = Instantiate(explosionPrefab, gameObject.GetComponent<Turret>().rotator.position, Quaternion.identity);
+            else
+                exlosionEffect = Instantiate(explosionPrefab, transform.position, transform.rotation);
             Destroy(exlosionEffect, explosionLifeTime);
         }
-        enemyLiftNumber -= 1;
+        EnemyInfo.enemyLifeNumber -= 1;
         Destroy(gameObject);
     }
 
