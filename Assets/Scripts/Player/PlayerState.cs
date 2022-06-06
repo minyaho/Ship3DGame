@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(HelicopterController))]
 public class PlayerState : MonoBehaviour
 {
     [Header("Player Parmaters")]
@@ -64,11 +63,17 @@ public class PlayerState : MonoBehaviour
     {   
         _mainUI.gameObject.SetActive(false);
         // Show GameOverUI
+        StartCoroutine(DelayDestory());
+    }
+
+    private IEnumerator DelayDestory()
+    {
+        yield return new WaitForSeconds(3);
         if(_gameOverUI != null)
             _gameOverUI.gameObject.SetActive(true);
         if(_gameOverObject != null)
             _gameOverObject.SetActive(true);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void HealthHandler()

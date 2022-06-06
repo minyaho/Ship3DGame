@@ -82,7 +82,7 @@ public class Turret : EnemyStats
 
         GameObject bullet = Instantiate(projectile, GunBarrels[index].position, headingDirection);
         bullet.GetComponent<Projectile>().Direction = v;
-        bullet.transform.localScale = new Vector3( transform.localScale.x, Mathf.Min( transform.localScale.y, 6),  transform.localScale.z);
+        bullet.transform.localScale = new Vector3( Mathf.Min( transform.localScale.x, 6) , Mathf.Min( transform.localScale.y, 12),  Mathf.Min( transform.localScale.z, 6) );
         fireSound.Play();
     }
     public void ChangeState(TurretState newState)
@@ -106,6 +106,7 @@ public class Turret : EnemyStats
         currentState.OnTriggerExit(other);
     }
 
+    
     public void OnDestory()
     {
         if(explosionPrefab){

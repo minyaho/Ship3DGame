@@ -264,8 +264,13 @@ public class HelicopterController : MonoBehaviour
             GameObject exlosionEffect = Instantiate(_explosionPrefab, this.transform.position, new Quaternion());
             Destroy(exlosionEffect, _explosionLifeTime);
         }
-        Destroy(this.gameObject);
         Destroy(ControlPanel.gameObject);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        gameObject.transform.GetChild(5).gameObject.SetActive(false);
+        Destroy(gameObject.GetComponent<HelicopterController>());
+        CrashSound.Stop();
+        GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<PlayerState>().OnDestory();
     }
+
 }

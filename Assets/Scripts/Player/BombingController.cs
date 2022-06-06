@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(HelicopterController))]
 public class BombingController : MonoBehaviour
 {
     [Header("Indicator")]
