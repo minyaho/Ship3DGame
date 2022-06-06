@@ -10,7 +10,7 @@ public class Turret : EnemyStats
    
     [Header("Turret Elements")]
     [SerializeField]
-    private Transform rotator;
+    public Transform rotator;
 
     [SerializeField]
     private Transform ghostRotator;
@@ -105,17 +105,4 @@ public class Turret : EnemyStats
     {
         currentState.OnTriggerExit(other);
     }
-
-    
-    public void OnDestory()
-    {
-        if(explosionPrefab){
-            GameObject exlosionEffect = Instantiate(explosionPrefab, rotator.position, Quaternion.identity);
-            Destroy(exlosionEffect, explosionLifeTime);
-        }
-        enemyLiftNumber -= 1;
-        Destroy(gameObject);
-    }
-
-
 }
