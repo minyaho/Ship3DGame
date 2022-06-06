@@ -6,6 +6,7 @@ public class BombingController : MonoBehaviour
 {
     [Header("Indicator")]
     public Transform indicator;
+    public Camera _camera;
     public int maxScale = 20;
     [SerializeField] private LayerMask _layerMask;
 
@@ -22,6 +23,7 @@ public class BombingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _camera.gameObject.SetActive(false);
         bombingTimer.Binding( () => bombReady = true,  () => (bombReady == false) );
         helicopter = GetComponent<Rigidbody>();
         _helicopterController = GetComponent<HelicopterController>();
@@ -33,6 +35,10 @@ public class BombingController : MonoBehaviour
         if( bombReady && Input.GetKeyDown( KeyCode.Z ) && AllowUserControl )
         {
             Bombing();
+        }
+        if( Input.GetKeyDown( KeyCode.V ) )
+        {
+            _camera.gameObject.SetActive( !_camera.gameObject.activeSelf );
         }
     }
 

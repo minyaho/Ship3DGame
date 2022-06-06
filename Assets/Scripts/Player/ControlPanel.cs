@@ -70,7 +70,7 @@ public class ControlPanel : MonoBehaviour {
         }
 
         // 切換到轟炸
-        if( Input.GetMouseButtonDown(2) && _lockSystem.Enable == false )
+        if( Input.GetMouseButtonDown(2) && _lockSystem.Enable == false && _bombCamera.gameObject.activeSelf )
         {
             BombingMode = !BombingMode;
             int priority = _mainCamera.m_Priority;

@@ -34,10 +34,10 @@ public class HealthBarUI : MonoBehaviour
     void OnEnable()
     {
         cam = Camera.main.transform;
-        
+
         foreach (Canvas canvas in FindObjectsOfType<Canvas>())
         {
-            if (canvas.renderMode == RenderMode.WorldSpace)
+            if (canvas.renderMode == RenderMode.WorldSpace && canvas.tag.Equals("HealthBar"))
             {
                 UIBar = Instantiate(healthUIPrefab, canvas.transform).transform;
                 healthSlider = UIBar.GetChild(0).GetComponent<Image>();
