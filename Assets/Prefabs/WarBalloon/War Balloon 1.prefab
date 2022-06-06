@@ -1785,7 +1785,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 100
+  m_Intensity: 40
   m_Range: 30
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
@@ -3917,9 +3917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe0255fba568354dad1846f52bb2fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  explosionPrefab: {fileID: 0}
-  explosionLifeTime: 3
   rotator: {fileID: 968416208177241689}
   ghostRotator: {fileID: 968416208070547168}
   layerMask:
@@ -4172,9 +4169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe0255fba568354dad1846f52bb2fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  explosionPrefab: {fileID: 0}
-  explosionLifeTime: 3
   rotator: {fileID: 968416208479283053}
   ghostRotator: {fileID: 968416209525954037}
   layerMask:
@@ -4561,9 +4555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe0255fba568354dad1846f52bb2fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  explosionPrefab: {fileID: 0}
-  explosionLifeTime: 3
   rotator: {fileID: 968416207976706544}
   ghostRotator: {fileID: 968416209419919259}
   layerMask:
@@ -9347,9 +9338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe0255fba568354dad1846f52bb2fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  explosionPrefab: {fileID: 0}
-  explosionLifeTime: 3
   rotator: {fileID: 2022780701740404538}
   ghostRotator: {fileID: 2022780701793726008}
   layerMask:
@@ -23150,9 +23138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe0255fba568354dad1846f52bb2fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  explosionPrefab: {fileID: 0}
-  explosionLifeTime: 3
   rotator: {fileID: 7643373312847425132}
   ghostRotator: {fileID: 7643373312761270126}
   layerMask:
@@ -26009,6 +25994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 200
+  canTimerDestory: 0
+  destroyTimer: 0
   explosionPrefab: {fileID: 8683145802441492035, guid: ea6492f32a742a44a85a8c0295a20e95, type: 3}
   explosionLifeTime: 3
   ForwardTiltForce: 20
