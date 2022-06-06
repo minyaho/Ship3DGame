@@ -16,7 +16,6 @@ public class Stats{
     public TMP_Text score_board;
     public TMP_Text hp_bar_text;
     public TMP_Text game_timer;
-    public TMP_Text turret_remain;
 
     public int score;
     public float hp; 
@@ -31,6 +30,9 @@ public class UIctrl_player : MonoBehaviour
 
     [SerializeField] private Stats info;
 
+    [SerializeField] private Button btnSetting;
+    [SerializeField] private GameObject panelSetting,heli;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,10 @@ public class UIctrl_player : MonoBehaviour
         }
         info.score = 0;
         info.hp = 1.0f;
+
+        btnSetting.onClick.AddListener(clickSetting);
+        //panelSetting = FindObjectOfType<UIctrl_setting>().gameObject;
+        //panelSetting = GameObject.Find("setting_menu");
     }
 
     // Update is called once per frame
@@ -62,17 +68,14 @@ public class UIctrl_player : MonoBehaviour
         info.engine.text = "Engine: " + _controller.EngineForce.ToString("F2");
         info.score_board.text = "Score: " + EnemyInfo.enemyPlayerGetScore.ToString();
         info.game_timer.text = "Timer: " + PlayerState._gameEndTimer.ToString("F2") + " s";
-
-        if(_playerState.currentHealth <= 0){
-            info.hp_bar_text.text =  0 + " / " + _playerState.maxHealth;
-            info.hp_bar.fillAmount = 0 * (1.0f / _playerState.maxHealth);
-        }
-        else
-        {
-            info.hp_bar_text.text =  _playerState.currentHealth + " / " + _playerState.maxHealth;
-            info.hp_bar.fillAmount = _playerState.currentHealth * (1.0f / _playerState.maxHealth);
-        }
-        
-        info.turret_remain.text = "Turret Remain: " + EnemyInfo.turretLifeNumber;
+        info.hp_bar_text.text =  _playerState.currentHealth + " / " + _playerState.maxHealth;
+        info.hp_bar.fillAmount = _playerState.currentHealth * (1.0f / _playerState.maxHealth);
+    }
+    private void clickSetting(){
+        Debug.Log("[Log] setting");
+        panelSetting.SetActive(true);
+        heli.SetActive(false);
+        _controller.gameObject.SetActive(false);
     }
 }
+
