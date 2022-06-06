@@ -65,7 +65,6 @@ public class BombingController : MonoBehaviour
                // OnHitTheGround();
                 // indicator.position = point2;
                 float distance = (helicopter.position.y - point2.y);
-                                    Debug.Log(distance);
 
                 if( distance < maxScale && distance > 5.0f )
                 {

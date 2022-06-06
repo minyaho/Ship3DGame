@@ -63,7 +63,7 @@ public class Turret : EnemyStats
         RaycastHit hit;
         // Debug.Log(tag);
 
-        if (Physics.Raycast(origin,direction, out hit, Mathf.Infinity,layerMask))
+        if (Physics.Raycast(origin,direction, out hit, Mathf.Infinity, layerMask))
         {
             if (hit.collider.tag == tag)
             {
@@ -82,6 +82,7 @@ public class Turret : EnemyStats
 
         GameObject bullet = Instantiate(projectile, GunBarrels[index].position, headingDirection);
         bullet.GetComponent<Projectile>().Direction = v;
+        bullet.transform.localScale = new Vector3( transform.localScale.x, Mathf.Min( transform.localScale.y, 6),  transform.localScale.z);
         fireSound.Play();
     }
     public void ChangeState(TurretState newState)
@@ -104,4 +105,16 @@ public class Turret : EnemyStats
     {
         currentState.OnTriggerExit(other);
     }
+
+    public void OnDestory()
+    {
+        if(explosionPrefab){
+            GameObject exlosionEffect = Instantiate(explosionPrefab, rotator.position, Quaternion.identity);
+            Destroy(exlosionEffect, explosionLifeTime);
+        }
+        enemyLiftNumber -= 1;
+        Destroy(gameObject);
+    }
+
+
 }

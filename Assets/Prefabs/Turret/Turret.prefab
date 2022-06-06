@@ -43,7 +43,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
+  m_Intensity: 2
   m_Range: 50
   m_SpotAngle: 86
   m_InnerSpotAngle: 21.80208
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620575215316705548}
   - component: {fileID: 1723393549595272976}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spot Light On Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 2056274225812805290}
   - component: {fileID: 2056274225812805288}
   - component: {fileID: 2056274225812805289}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mediumBlaster_center 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 2056274225953633757}
   - component: {fileID: 2056274225953633755}
   - component: {fileID: 2056274225953633756}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: foot_double 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2056274225980425079}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GunBarrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 2056274225981625385}
   - component: {fileID: 2056274225981625399}
   - component: {fileID: 2056274225981625384}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: foot_double 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 2056274226047389730}
   - component: {fileID: 2056274226047389728}
   - component: {fileID: 2056274226047389729}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mediumBlaster_center 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 2056274226066160336}
   - component: {fileID: 2056274226066160350}
   - component: {fileID: 2056274226066160351}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ring_bevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 2056274226112089027}
   - component: {fileID: 2056274226112089025}
   - component: {fileID: 2056274226112089026}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mediumBlaster_center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 2056274226273814406}
   - component: {fileID: 2056274226273814404}
   - component: {fileID: 2056274226273814405}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mediumBlaster_barrelSilencer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 2056274226419962421}
   - component: {fileID: 2056274226419962419}
   - component: {fileID: 2056274226419962420}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: leg_cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2056274226630911885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GunBarrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 2056274226770915225}
   - component: {fileID: 2056274226770915239}
   - component: {fileID: 2056274226770915224}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: leg_cover 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 2056274226868946554}
   - component: {fileID: 2056274226868946552}
   - component: {fileID: 2056274226868946553}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: leg_cover 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   ghostRotator: {fileID: 2056274227401257111}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 3073
   gunBarrels:
   - {fileID: 2056274226630911885}
   - {fileID: 2056274225980425079}
@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 2056274227078580957}
   - component: {fileID: 2056274227078580955}
   - component: {fileID: 2056274227078580956}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mediumBlaster_barrelSilencer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 2056274227319034259}
   - component: {fileID: 2056274227319034260}
   - component: {fileID: 7225810259167512852}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1457,7 +1457,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2858e2a64a56d794cb44d385bd442ed1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1467,9 +1467,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 90
+  MaxDistance: 75
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1478,21 +1478,30 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5487175
-      inSlope: 0
-      outSlope: 0
+      value: 0.8639183
+      inSlope: 0.08266681
+      outSlope: 0.08266681
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.8923593
+    - serializedVersion: 3
+      time: 0.44473875
+      value: 0.13768956
+      inSlope: -0.6021381
+      outSlope: -0.6021381
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.011236
-      outSlope: -1.011236
+      inSlope: -0.21189922
+      outSlope: -0.21189922
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.46287653
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1635,7 +1644,7 @@ GameObject:
   - component: {fileID: 2056274227644292967}
   - component: {fileID: 2056274227644292965}
   - component: {fileID: 2056274227644292966}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: foot_double
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1718,7 +1727,7 @@ GameObject:
   - component: {fileID: 2056274227649839045}
   - component: {fileID: 2056274227649839043}
   - component: {fileID: 2056274227649839044}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: foot_double 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1801,7 +1810,7 @@ GameObject:
   - component: {fileID: 2056274227660397080}
   - component: {fileID: 2056274227660397094}
   - component: {fileID: 2056274227660397095}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: leg_cover 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

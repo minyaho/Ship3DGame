@@ -20,7 +20,7 @@ public class IdleState : TurretState
 
         if (parent.Target != null)
         {
-            if (parent.CanSeeTarget(((parent.Target.position+parent.AimOffset)- parent.GunBarrels[0].position),parent.GunBarrels[0].position, "Player"))
+            if (parent.CanSeeTarget(((parent.Target.position+parent.AimOffset)- parent.GunBarrels[0].position), parent.GunBarrels[0].position, "Player"))
             {
                 parent.ChangeState(new FindTargetState());
             }
