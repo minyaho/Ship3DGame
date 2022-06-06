@@ -29,7 +29,7 @@ public class FlyBomb : EnemyStats
 
     [Header("Not Find Player Distance")]
     [SerializeField]
-    private bool setDistance = true;
+    public bool setDistance = true;
     [SerializeField]
     private float distanceRangeMax = 600.0f;
     [SerializeField]

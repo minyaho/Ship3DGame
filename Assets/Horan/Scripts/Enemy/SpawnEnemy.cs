@@ -109,6 +109,16 @@ public class SpawnEnemy : MonoBehaviour
                         flyBomb.fallMode = FlyBomb.FallMode.EnemyFallFromSky;
                         break;
                 }
+
+                if(setting_stat.difficulty != null)
+                {
+                    if(setting_stat.difficulty >= 0.5f)
+                    {
+                        flyBomb.gameMode = FlyBomb.GameMode.EnemyFindPlayer;
+                        flyBomb.fallMode = FlyBomb.FallMode.EnemyFallFromSky;
+                        flyBomb.setDistance = false;
+                    }
+                }
             }
 
             // Set Enemy
