@@ -99,7 +99,6 @@ public class FlyBomb : EnemyStats
                     else
                     {
                         fallMode = FallMode.EnemyFallFromSky;
-                        setDistance = false;
                     }
                 }
                 else

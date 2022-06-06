@@ -32,6 +32,12 @@ public class EnemyStats : MonoBehaviour
         if(EnemyInfo.enemyLifeNumber != null)
             EnemyInfo.enemyLifeNumber += 1;
         _maxHealth = currentHealth;
+
+        if(gameObject.GetComponent<Turret>() != null)
+        {
+            // Debug.Log("This is turret");
+            EnemyInfo.turretLifeNumber += 1;
+        }
     }
 
     // Update is called once per frame
@@ -103,6 +109,7 @@ public class EnemyStats : MonoBehaviour
                 {
                     // Debug.Log("This is turret");
                     EnemyInfo.destoryTurretNumber += 1;
+                    EnemyInfo.turretLifeNumber -= 1;
                 }
                 else if(gameObject.GetComponent<WarBalloon>() != null)
                 {

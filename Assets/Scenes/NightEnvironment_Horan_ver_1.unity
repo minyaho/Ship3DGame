@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 3492973}
   m_Layer: 0
   m_Name: Plate (1)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 105394898}
   m_Layer: 0
   m_Name: frontPlane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 115778185}
   m_Layer: 0
   m_Name: backPlane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 182277276}
   m_Layer: 0
   m_Name: road (2)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3254,6 +3254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boat
       objectReference: {fileID: 0}
+    - target: {fileID: 7302746539415514699, guid: 382c98e98004094438fd15ae949b9342, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382c98e98004094438fd15ae949b9342, type: 3}
 --- !u!4 &439576259 stripped
@@ -3923,6 +3927,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: watchTower
       objectReference: {fileID: 0}
+    - target: {fileID: 4402541841920238830, guid: 0b2db8cdf88550b4bbef1225a6e7e5d8, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     - target: {fileID: 5082560613656931189, guid: 0b2db8cdf88550b4bbef1225a6e7e5d8, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -4183,6 +4191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLife: 0
+  turretLife: 0
   playerDestory: 0
   warBalloonDestory: 0
   flyBombDestory: 0
@@ -4388,7 +4397,7 @@ GameObject:
   - component: {fileID: 616076714}
   m_Layer: 0
   m_Name: Ocean
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4924,7 +4933,7 @@ GameObject:
   - component: {fileID: 710888964}
   m_Layer: 0
   m_Name: tarmac
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6641,7 +6650,7 @@ GameObject:
   - component: {fileID: 959738346}
   m_Layer: 0
   m_Name: WindZone
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7647,7 +7656,7 @@ GameObject:
   - component: {fileID: 1043958504}
   m_Layer: 0
   m_Name: road (8)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7747,7 +7756,7 @@ GameObject:
   - component: {fileID: 1063405562}
   m_Layer: 0
   m_Name: Plate
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14105,6 +14114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boat (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7302746539415514699, guid: 382c98e98004094438fd15ae949b9342, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382c98e98004094438fd15ae949b9342, type: 3}
 --- !u!4 &1338862005 stripped
@@ -14358,7 +14371,7 @@ GameObject:
   - component: {fileID: 1371022353}
   m_Layer: 0
   m_Name: road (3)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15163,7 +15176,7 @@ GameObject:
   - component: {fileID: 1423628557}
   m_Layer: 0
   m_Name: leftPlane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16926,6 +16939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: H_BottomLine
       objectReference: {fileID: 0}
+    - target: {fileID: 2728355139828275146, guid: bffeccdfc1f6af2479c3fb5ae25a7a3c, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffeccdfc1f6af2479c3fb5ae25a7a3c, type: 3}
 --- !u!4 &1535660611 stripped
@@ -17037,7 +17054,7 @@ GameObject:
   - component: {fileID: 1551597487}
   m_Layer: 0
   m_Name: cross
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17161,7 +17178,7 @@ GameObject:
   - component: {fileID: 1615969916}
   m_Layer: 0
   m_Name: downPlane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17274,7 +17291,7 @@ GameObject:
   - component: {fileID: 1680769926}
   m_Layer: 0
   m_Name: rightPlane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18830,7 +18847,7 @@ GameObject:
   - component: {fileID: 1796186452}
   m_Layer: 0
   m_Name: road
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19031,7 +19048,7 @@ GameObject:
   - component: {fileID: 1815373842}
   m_Layer: 0
   m_Name: topPlane
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19564,8 +19581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe905ba65d487246802a0d3e92421bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnReturn: {fileID: 0}
-  score: {fileID: 0}
+  btnReturn: {fileID: 1126916702}
+  score: {fileID: 237854511}
 --- !u!114 &1923475466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19732,6 +19749,10 @@ PrefabInstance:
     - target: {fileID: 7994838659834929764, guid: 1564adee95e00084eb43ff676b3ac55c, type: 3}
       propertyPath: m_Name
       value: O_Null
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994838659834929764, guid: 1564adee95e00084eb43ff676b3ac55c, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 7994838659834929767, guid: 1564adee95e00084eb43ff676b3ac55c, type: 3}
       propertyPath: m_RootOrder
@@ -20681,7 +20702,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5248244
+  m_Name: pb_Mesh-484044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21025,7 +21046,7 @@ GameObject:
   - component: {fileID: 2024396797}
   m_Layer: 0
   m_Name: road (9)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21905,7 +21926,7 @@ GameObject:
   - component: {fileID: 2130643758}
   m_Layer: 0
   m_Name: road (1)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

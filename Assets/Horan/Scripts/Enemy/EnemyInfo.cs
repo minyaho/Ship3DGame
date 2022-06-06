@@ -6,6 +6,7 @@ public class EnemyInfo : MonoBehaviour
 {
     public static int enemyLifeNumber = 0;
     public static int enemyPlayerDestoryNumer = 0;
+    public static int turretLifeNumber = 0;
 
     public static int destoryFlyBombNumber = 0;
     public static int destoryWarBalloonNumber = 0;
@@ -15,6 +16,7 @@ public class EnemyInfo : MonoBehaviour
 
     [Header("Enemy Monitor (Don't set)")]
     [SerializeField]  private int enemyLife;
+    [SerializeField]  private int turretLife;
     [SerializeField]  private int playerDestory;
     [SerializeField]  private int warBalloonDestory;
     [SerializeField]  private int flyBombDestory;
@@ -40,6 +42,7 @@ public class EnemyInfo : MonoBehaviour
                               destoryFlyBombNumber * flyBombScore;
 
         enemyLife = enemyLifeNumber;
+        turretLife = turretLifeNumber;
         playerDestory = enemyPlayerDestoryNumer;
 
         warBalloonDestory = destoryWarBalloonNumber;
