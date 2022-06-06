@@ -12,16 +12,17 @@ public class UIctrl_gameover : MonoBehaviour
     private int gameOverScore = 0;
     void Start()
     {
-        gameOverScore = EnemyInfo.enemyPlayerGetScore;
-        score.text = "Score: " + gameOverScore;
+        Debug.Log(EnemyInfo.enemyPlayerGetScore.ToString());
+        score.text = "Score: " + EnemyInfo.enemyPlayerGetScore.ToString();
         btnReturn.onClick.AddListener(clickReturn);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+
     private void clickReturn(){
         Debug.Log("[Log] return");
         SceneManager.LoadScene("UI_start");

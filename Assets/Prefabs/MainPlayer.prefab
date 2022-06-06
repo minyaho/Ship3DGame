@@ -2983,6 +2983,7 @@ MonoBehaviour:
     score_board: {fileID: 3811220117621157875}
     hp_bar_text: {fileID: 4564489705403729814}
     game_timer: {fileID: 6967014115114430639}
+    turret_remain: {fileID: 7116915247293572467}
     score: 0
     hp: 0
     hp_bar: {fileID: 3811220118632928792}
@@ -6053,7 +6054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3811220118324690497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000027894974, y: 4.1000004, z: -20.089996}
+  m_LocalPosition: {x: 0, y: 4.1, z: -20.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3811220118511773860}
@@ -7247,8 +7248,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3811220118920503661}
-  m_LocalRotation: {x: 0.23711663, y: -0.026273213, z: 0.0064151827, w: 0.9711047}
-  m_LocalPosition: {x: 0.00001090765, y: -1.5200005, z: -2.500011}
+  m_LocalRotation: {x: 0.23711625, y: -0.026274204, z: 0.006415416, w: 0.97110474}
+  m_LocalPosition: {x: 0, y: -1.52, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3811220117444517796}
@@ -8233,7 +8234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3811220119344837013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.10005736, y: 4.6000004, z: -20.08999}
+  m_LocalPosition: {x: 0, y: 4.1, z: -20.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4550597628920149111}

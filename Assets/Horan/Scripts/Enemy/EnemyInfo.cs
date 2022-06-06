@@ -14,6 +14,8 @@ public class EnemyInfo : MonoBehaviour
 
     public static int enemyPlayerGetScore = 0;
 
+    public static bool canUpdate = true;
+
     [Header("Enemy Monitor (Don't set)")]
     [SerializeField]  private int enemyLife;
     [SerializeField]  private int turretLife;
@@ -31,22 +33,27 @@ public class EnemyInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        canUpdate = true;
+        enemyPlayerGetScore = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemyPlayerGetScore = destoryWarBalloonNumber * warBalloonScore +
-                              destoryTurretNumber * turretScore + 
-                              destoryFlyBombNumber * flyBombScore;
+        if(canUpdate)
+        {
+            enemyPlayerGetScore = destoryWarBalloonNumber * warBalloonScore +
+                                destoryTurretNumber * turretScore + 
+                                destoryFlyBombNumber * flyBombScore;
 
-        enemyLife = enemyLifeNumber;
-        turretLife = turretLifeNumber;
-        playerDestory = enemyPlayerDestoryNumer;
+            enemyLife = enemyLifeNumber;
+            turretLife = turretLifeNumber;
+            playerDestory = enemyPlayerDestoryNumer;
 
-        warBalloonDestory = destoryWarBalloonNumber;
-        flyBombDestory = destoryFlyBombNumber;
-        turretDestory = destoryTurretNumber;
+            warBalloonDestory = destoryWarBalloonNumber;
+            flyBombDestory = destoryFlyBombNumber;
+            turretDestory = destoryTurretNumber;
+            score = enemyPlayerGetScore;
+        }
     }
 }

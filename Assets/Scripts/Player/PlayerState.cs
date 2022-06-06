@@ -61,7 +61,7 @@ public class PlayerState : MonoBehaviour
 
     public void OnDestory()
     {   
-        setEnemyInfoZero();
+        // setEnemyInfoZero();
         _mainUI.gameObject.SetActive(false);
         // Show GameOverUI
         StartCoroutine(DelayDestory());
@@ -79,6 +79,7 @@ public class PlayerState : MonoBehaviour
 
     private void setEnemyInfoZero()
     {
+        EnemyInfo.canUpdate = false;
         EnemyInfo.enemyLifeNumber = 0;
         EnemyInfo.enemyPlayerDestoryNumer = 0;
         EnemyInfo.turretLifeNumber = 0;
@@ -86,8 +87,6 @@ public class PlayerState : MonoBehaviour
         EnemyInfo.destoryFlyBombNumber = 0;
         EnemyInfo.destoryWarBalloonNumber = 0;
         EnemyInfo.destoryTurretNumber = 0;
-
-        EnemyInfo.enemyPlayerGetScore = 0;
     }
 
     private void HealthHandler()
