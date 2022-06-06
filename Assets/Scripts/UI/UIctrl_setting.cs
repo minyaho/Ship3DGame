@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIctrl_setting : MonoBehaviour
 {
     public GameObject panelCurrent;
-    public Button btnReturn, btnApply;
+    public Button btnReturn, btnApply, btnExit;
     public Slider slider1,slider2;
     public Dropdown d_Dropdown;
     [SerializeField] private GameObject playerUI;
@@ -18,6 +18,7 @@ public class UIctrl_setting : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         btnReturn.onClick.AddListener(clickReturn);
         btnApply.onClick.AddListener(clickApply);
+        btnExit.onClick.AddListener(clickExit);
         slider1.onValueChanged.AddListener(delegate {BGMChange(); });
         slider2.onValueChanged.AddListener(delegate {effectChange(); });
         d_Dropdown.onValueChanged.AddListener(delegate {difficultyChanged(d_Dropdown);});
@@ -42,6 +43,11 @@ public class UIctrl_setting : MonoBehaviour
         _controller.gameObject.SetActive(true);
         playerUI.SetActive(true);   
     }
+    private void clickExit(){
+        Debug.Log("[Log] exit");
+        SceneManager.LoadScene("UI_start"); 
+    }
+
 
     // Invoked when the value of the slider changes.
     public void BGMChange()
