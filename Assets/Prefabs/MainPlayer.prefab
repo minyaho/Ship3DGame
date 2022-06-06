@@ -2005,6 +2005,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator: {fileID: 3811220117808491291}
   maxScale: 30
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 11264
   bomb: {fileID: 7668729460804409106, guid: edca06f2eeb28714facabaa496a14170, type: 3}
   bombSpawn: {fileID: 3811220118942967701}
   bombingTimer: {fileID: 3811220118442470633}
@@ -2038,6 +2041,7 @@ MonoBehaviour:
   maxHealth: 200
   canDamage: 1
   gameEndTimer: 600
+  timerUpdate: 1
   _mainUI: {fileID: 3811220118409274529}
   _gameOverUI: {fileID: 1791729645715885002}
   _gameOverObject: {fileID: 0}
@@ -5448,7 +5452,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3811220118920503661}
-  m_LocalRotation: {x: 0.23711625, y: -0.026274204, z: 0.006415416, w: 0.97110474}
+  m_LocalRotation: {x: 0.23711623, y: -0.026274132, z: 0.006415398, w: 0.97110474}
   m_LocalPosition: {x: 0, y: -1.52, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
