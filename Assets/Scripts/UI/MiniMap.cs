@@ -20,4 +20,6 @@ public class MiniMap : MonoBehaviour
     {
         _camera.transform.position = _player.transform.position + (Vector3.up * _yOffset);
     }
+
+
 }
