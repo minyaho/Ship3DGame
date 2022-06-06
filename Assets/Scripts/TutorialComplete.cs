@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class TutorialComplete : MonoBehaviour
 {
+    [SerializeField] private GameObject mainPlayer;
+
     public GameObject gameComplete;
 
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log ("Hit goal");
         gameComplete.gameObject.SetActive(true);
-        TimeCounter.stopCount();
+        PlayerState playerstate = mainPlayer.GetComponent<PlayerState>();
+        playerstate.timerUpdate = false;
     }
 }
