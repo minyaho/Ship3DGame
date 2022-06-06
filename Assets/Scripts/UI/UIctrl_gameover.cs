@@ -9,10 +9,8 @@ public class UIctrl_gameover : MonoBehaviour
     // Start is called before the first frame update
     public Button btnReturn;
     public TMP_Text score;
-    private int gameOverScore = 0;
     void Start()
     {
-        Debug.Log(EnemyInfo.enemyPlayerGetScore.ToString());
         score.text = "Score: " + EnemyInfo.enemyPlayerGetScore.ToString();
         btnReturn.onClick.AddListener(clickReturn);
     }

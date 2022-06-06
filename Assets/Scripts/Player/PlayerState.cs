@@ -61,7 +61,7 @@ public class PlayerState : MonoBehaviour
 
     public void OnDestory()
     {   
-        // setEnemyInfoZero();
+        setEnemyInfoZero();
         _mainUI.gameObject.SetActive(false);
         // Show GameOverUI
         StartCoroutine(DelayDestory());
