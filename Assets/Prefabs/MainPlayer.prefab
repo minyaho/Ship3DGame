@@ -156,7 +156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5192468913640933778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3067,7 +3067,7 @@ MonoBehaviour:
     hp: 0
     hp_bar: {fileID: 3811220118632928792}
   btnSetting: {fileID: 2538556322458778307}
-  panelSetting: {fileID: 491872156452702475}
+  panelSetting: {fileID: 7105536423317523342}
   heli: {fileID: 3811220118409274528}
 --- !u!1 &3811220117395174609
 GameObject:
@@ -16439,7 +16439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6790295256939466632
 RectTransform:
   m_ObjectHideFlags: 0
