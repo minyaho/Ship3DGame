@@ -10,28 +10,27 @@ public class EnemyStats : MonoBehaviour
     private float _maxHealth; // Please don't set the value, it will auto set.
 
     [Header("Enemy Parmaters")]
-    [SerializeField]
-    public float currentHealth = 100.0f;
-    [SerializeField]
-    private bool canTimerDestory = false;
-    [SerializeField]
-    public float destroyTimer;
+    [SerializeField] public float currentHealth = 100.0f;
+    [SerializeField] private bool canTimerDestory = false;
+    [SerializeField] public float destroyTimer;
 
 
     [Header("Explosion")]
-    public GameObject explosionPrefab;
-    public int explosionLifeTime = 3;
+    [SerializeField] public GameObject explosionPrefab;
+    [SerializeField] public int explosionLifeTime = 3;
 
     // Provide to UI use
     public static int enemyLiftNumber = 0;
     public static int enemyPlayerDestoryNumer = 0;
 
+    private bool damageByPlayer = false;
 
 
     // Start is called before the first frame update
     public void Start()
     {
-        enemyLiftNumber += 1;
+        if(EnemyInfo.enemyLifeNumber != null)
+            EnemyInfo.enemyLifeNumber += 1;
         _maxHealth = currentHealth;
     }
 
@@ -49,6 +48,8 @@ public class EnemyStats : MonoBehaviour
 
     public void OnDamageByPlayer(float attackValue) // If damage by player, please use it.
     {
+        damageByPlayer = true;
+
         if(setting_stat.difficulty != null)
         {
             currentHealth -= attackValue*(1 - setting_stat.difficulty);
@@ -60,12 +61,11 @@ public class EnemyStats : MonoBehaviour
         
         UpdateHealthBarOnAttack?.Invoke(currentHealth, _maxHealth);
 
-        if(currentHealth <= 0){
-            enemyPlayerDestoryNumer += 1;
-        }
+        // Debug.Log(currentHealth);
     }
     public void OnDamageBySelf(float attackValue) // If you want to destory the GameObject, please use it.
     {
+        damageByPlayer = false;
         currentHealth -= attackValue;
         UpdateHealthBarOnAttack?.Invoke(currentHealth, _maxHealth);
     }
@@ -75,9 +75,8 @@ public class EnemyStats : MonoBehaviour
             GameObject exlosionEffect = Instantiate(explosionPrefab, transform.position, transform.rotation);
             Destroy(exlosionEffect, explosionLifeTime);
         }
-        Destroy(gameObject);
-
         enemyLiftNumber -= 1;
+        Destroy(gameObject);
     }
 
     public void OnDestoryByTimer(int time)
@@ -91,6 +90,26 @@ public class EnemyStats : MonoBehaviour
         // Debug.Log("Here");
         if(currentHealth <= 0) // If stats class' health var <= 0, destroy enemy object
         {     
+            if(damageByPlayer == true){
+                if(EnemyInfo.enemyPlayerDestoryNumer != null)
+                    EnemyInfo.enemyPlayerDestoryNumer += 1;
+
+                if(gameObject.GetComponent<FlyBomb>() != null)
+                {
+                    // Debug.Log("This is fly bomb");
+                    EnemyInfo.destoryFlyBombNumber += 1;
+                }
+                else if(gameObject.GetComponent<Turret>() != null)
+                {
+                    // Debug.Log("This is turret");
+                    EnemyInfo.destoryTurretNumber += 1;
+                }
+                else if(gameObject.GetComponent<WarBalloon>() != null)
+                {
+                    // Debug.Log("This is war balloon");
+                    EnemyInfo.destoryWarBalloonNumber += 1;
+                }
+            }
             OnDestory();
         }
     }

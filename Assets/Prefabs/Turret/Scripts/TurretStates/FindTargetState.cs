@@ -6,14 +6,16 @@ public class FindTargetState : TurretState
 {
     public override void Update()
     {
-        parent.GhostRotator.LookAt(parent.Target.position+parent.AimOffset);
-
-        parent.Rotator.rotation = Quaternion.RotateTowards(parent.Rotator.rotation, parent.GhostRotator.rotation, Time.deltaTime * parent.RotationSpeed);
-
-        if (parent.GhostRotator.rotation.y == parent.Rotator.rotation.y)
+        if(parent.Target != null)
         {
-            parent.ChangeState(new ShootState());
+            parent.GhostRotator.LookAt(parent.Target.position+parent.AimOffset);
+
+            parent.Rotator.rotation = Quaternion.RotateTowards(parent.Rotator.rotation, parent.GhostRotator.rotation, Time.deltaTime * parent.RotationSpeed);
+
+            if (parent.GhostRotator.rotation.y == parent.Rotator.rotation.y)
+            {
+                parent.ChangeState(new ShootState());
+            }
         }
-        
     }
 }

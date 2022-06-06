@@ -9,13 +9,16 @@ public class PlayerState : MonoBehaviour
     [Header("Player Parmaters")]
     [SerializeField] public float currentHealth = 200.0f;
     [SerializeField] public float maxHealth = 200.0f;
-
     [SerializeField] public bool canDamage = true;
+    [SerializeField] public float gameEndTimer = 600.0f;
+    [SerializeField] public bool timerUpdate = true;
 
     [Header("UI")]
     [SerializeField] private Transform _mainUI;
     [SerializeField] private Canvas _gameOverUI;
     [SerializeField] private GameObject _gameOverObject;
+
+    public static float _gameEndTimer = 0.0f;
 
     private HelicopterController _helicopterController;
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class PlayerState : MonoBehaviour
     {
         _helicopterController = GetComponent<HelicopterController>();
         maxHealth = currentHealth;
+        _gameEndTimer = gameEndTimer;
     }
 
     public void OnDamage(float attackValue)
@@ -50,6 +54,10 @@ public class PlayerState : MonoBehaviour
     {
         HealthHandler();
         DamageStateEffect();
+        TimerHandler();
+
+        if(timerUpdate)
+            _gameEndTimer -= Time.deltaTime;
     }
 
     public void OnDestory()
@@ -60,6 +68,7 @@ public class PlayerState : MonoBehaviour
             _gameOverUI.gameObject.SetActive(true);
         if(_gameOverObject != null)
             _gameOverObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void HealthHandler()
@@ -68,6 +77,16 @@ public class PlayerState : MonoBehaviour
         if(currentHealth <= 0) // If stats class' health var <= 0, destroy enemy object
         {     
             _helicopterController.SetCrash();
+            timerUpdate = false;
+        }
+    }
+
+    private void TimerHandler()
+    {
+        if(_gameEndTimer <= 0) // If stats class' health var <= 0, destroy enemy object
+        {   
+            OnDestory();
+            gameObject.SetActive(false);
         }
     }
 

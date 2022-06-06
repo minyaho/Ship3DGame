@@ -14,6 +14,8 @@ public class Timer{
 public class Stats{
     public TMP_Text engine;
     public TMP_Text score_board;
+    public TMP_Text hp_bar_text;
+    public TMP_Text game_timer;
 
     public int score;
     public float hp; 
@@ -57,7 +59,9 @@ public class UIctrl_player : MonoBehaviour
             //Debug.Log("timer:"+t.timer.GetRemainingTime());
         }
         info.engine.text = "Engine: " + _controller.EngineForce.ToString("F2");
-        info.score_board.text = "Score:" + EnemyStats.enemyPlayerDestoryNumer.ToString();
+        info.score_board.text = "Score: " + EnemyInfo.enemyPlayerGetScore.ToString();
+        info.game_timer.text = "Timer: " + PlayerState._gameEndTimer.ToString("F2") + " s";
+        info.hp_bar_text.text =  _playerState.currentHealth + " / " + _playerState.maxHealth;
         info.hp_bar.fillAmount = _playerState.currentHealth * (1.0f / _playerState.maxHealth);
     }
 }
