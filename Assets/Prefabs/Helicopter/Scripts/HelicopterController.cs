@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+ 
 
 [RequireComponent(typeof(PlayerState))]
 public class HelicopterController : MonoBehaviour
@@ -68,11 +71,11 @@ public class HelicopterController : MonoBehaviour
     {
         if( Crash == true )
         {
-            hMove.x += Time.fixedDeltaTime * 1.6f * (crashX ? 1 : -1);
-            hMove.x = Mathf.Clamp(hMove.x, -1, 1);
+            hMove.x += Time.fixedDeltaTime * 1.9f * (crashX ? 1 : -1);
+            hMove.x = Mathf.Clamp(hMove.x, -12, 12);
 
-            hMove.y += Time.fixedDeltaTime * 1.6f * (crashY ? 1 : -1);
-            hMove.y = Mathf.Clamp(hMove.y, -1, 1);
+            hMove.y += Time.fixedDeltaTime * 1.9f * (crashY ? 1 : -1);
+            hMove.y = Mathf.Clamp(hMove.y, -12, 12);
             EngineForce = Mathf.Max(EngineForce - 0.24f, 0.0f);
         }
         LiftProcess(HelicopterModel);
@@ -192,7 +195,7 @@ public class HelicopterController : MonoBehaviour
         hMove.y += tempY;
         hMove.y = Mathf.Clamp(hMove.y, -1, 1);
 
-        if( pressDown == false )
+        if( pressDown == false && Crash == false )
         {
             DownForce = Mathf.Max(DownForce - 0.25f, 0f);
         }
@@ -208,14 +211,7 @@ public class HelicopterController : MonoBehaviour
             if( Crash == true )
             {
                 // Exlosion effect
-                if (_explosionPrefab)
-                {
-                    GameObject exlosionEffect = Instantiate(_explosionPrefab, this.transform.position, new Quaternion());
-                    Destroy(exlosionEffect, _explosionLifeTime);
-                }
-                Destroy(this.gameObject);
-                Destroy(ControlPanel.gameObject);
-                GetComponent<PlayerState>().OnDestory();
+                Exlosion();
             }
         }
 
@@ -242,6 +238,7 @@ public class HelicopterController : MonoBehaviour
         {
             crashX = (Random.Range(-4, 5) & 1) == 0;
             crashY = (Random.Range(-4, 5) & 1) == 0;
+            DownForce = 60;
             Crash = true;
             ControlPanel.AllowUserControl = false;
             GetComponent<BombingController>().AllowUserControl = false;
@@ -249,6 +246,26 @@ public class HelicopterController : MonoBehaviour
             GetComponent<MechineGunShootController>().AllowUserControl = false;
             CrashSound.playOnAwake = true;
             CrashSound.Play();
+            StartCoroutine(CrashTheadHold());
         }
+    }
+
+    private IEnumerator CrashTheadHold()
+    {
+        yield return new WaitForSeconds(15);
+        Exlosion();
+    }
+
+    private void Exlosion()
+    {
+        // Exlosion effect
+        if (_explosionPrefab)
+        {
+            GameObject exlosionEffect = Instantiate(_explosionPrefab, this.transform.position, new Quaternion());
+            Destroy(exlosionEffect, _explosionLifeTime);
+        }
+        Destroy(this.gameObject);
+        Destroy(ControlPanel.gameObject);
+        GetComponent<PlayerState>().OnDestory();
     }
 }

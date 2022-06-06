@@ -1255,7 +1255,7 @@ MonoBehaviour:
   animator: {fileID: 2056274227074197371}
   fireSound: {fileID: 7225810259167512852}
   rotationSpeed: 300
-  aimOffset: {x: 0, y: 0.01, z: 0}
+  aimOffset: {x: 0, y: 0.02, z: 0}
 --- !u!114 &4299906646791344090
 MonoBehaviour:
   m_ObjectHideFlags: 0
