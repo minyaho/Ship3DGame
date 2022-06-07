@@ -1364,7 +1364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &705075604
 MonoBehaviour:
@@ -1601,7 +1601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878484011
 Transform:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ Transform:
   - {fileID: 642146529}
   - {fileID: 246492786}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1209725554
 GameObject:
@@ -2360,7 +2360,7 @@ Transform:
   - {fileID: 972144325}
   - {fileID: 674265320}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1367464000
 GameObject:
@@ -3652,7 +3652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2898023735563110129, guid: 8cebd0278dd677b47ae924f68010e9db, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2898023735563110129, guid: 8cebd0278dd677b47ae924f68010e9db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3697,6 +3697,10 @@ PrefabInstance:
     - target: {fileID: 9117970766019338849, guid: 8cebd0278dd677b47ae924f68010e9db, type: 3}
       propertyPath: m_Name
       value: War Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117970766019338849, guid: 8cebd0278dd677b47ae924f68010e9db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9117970766019338851, guid: 8cebd0278dd677b47ae924f68010e9db, type: 3}
       propertyPath: m_Drag
@@ -3805,7 +3809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4550597628920149111, guid: 33eb1097a5e803b4285ebfd6e5ad9561, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4550597628920149111, guid: 33eb1097a5e803b4285ebfd6e5ad9561, type: 3}
       propertyPath: m_LocalPosition.x
