@@ -44,6 +44,7 @@ public class Turret : EnemyStats
     public Transform[] GunBarrels { get => gunBarrels; set => gunBarrels = value; }
     public Animator Animator { get => animator; set => animator = value; }
 
+    public bool CanAttack = true;
     new private void Start()
     {
         base.Start();
@@ -60,6 +61,10 @@ public class Turret : EnemyStats
 
     public bool CanSeeTarget(Vector3 direction, Vector3 origin, string tag)
     {
+        if( CanAttack == false )
+        {
+            return false;
+        }
         RaycastHit hit;
         // Debug.Log(tag);
 
