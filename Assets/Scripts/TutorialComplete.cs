@@ -18,6 +18,7 @@ public class TutorialComplete : MonoBehaviour
             gameComplete.gameObject.SetActive(true);
             PlayerState playerstate = mainPlayer.GetComponent<PlayerState>();
             playerstate.timerUpdate = false;
+            playerstate.setEnemyInfoZero();
             mainPlayer.transform.parent.gameObject.SetActive(false);
         }
     }
