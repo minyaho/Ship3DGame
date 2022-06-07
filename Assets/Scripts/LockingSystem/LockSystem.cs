@@ -174,9 +174,9 @@ class LockSystem : MonoBehaviour
 
             _crosshair.position = new Vector2( visualRect.xMin, visualRect.yMin );
 
-            _crosshair.sizeDelta = new Vector2( visualRect.width, visualRect.height ); 
+            _crosshair.sizeDelta = new Vector2( visualRect.width - (visualRect.width / 3), visualRect.height - ( visualRect.height / 3) ); 
 
-            _text.gameObject.transform.position = new Vector2( visualRect.xMin + visualRect.width + (visualRect.width / 5), visualRect.yMin + visualRect.height - (visualRect.height / 20));
+            _text.gameObject.transform.position = new Vector2( visualRect.xMin + visualRect.width + (visualRect.width / 2), visualRect.yMin + visualRect.height - (visualRect.height / 20));
         }
     }
     private void ResetSystem()
