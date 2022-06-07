@@ -18,7 +18,8 @@ public class MiniMap : MonoBehaviour
     }
     private void Update()
     {
-        _camera.transform.position = _player.transform.position + (Vector3.up * _yOffset);
+        if(_player != null)
+            _camera.transform.position = _player.transform.position + (Vector3.up * _yOffset);
     }
 
 

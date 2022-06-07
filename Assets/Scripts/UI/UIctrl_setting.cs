@@ -45,6 +45,8 @@ public class UIctrl_setting : MonoBehaviour
     }
     private void clickExit(){
         Debug.Log("[Log] exit");
+        PlayerState playerState =_controller.gameObject.GetComponent<PlayerState>();
+        playerState.setEnemyInfoZero();
         SceneManager.LoadScene("UI_start"); 
     }
 

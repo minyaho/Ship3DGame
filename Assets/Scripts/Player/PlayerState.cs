@@ -77,7 +77,7 @@ public class PlayerState : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void setEnemyInfoZero()
+    public void setEnemyInfoZero()
     {
         EnemyInfo.canUpdate = false;
         EnemyInfo.enemyLifeNumber = 0;
