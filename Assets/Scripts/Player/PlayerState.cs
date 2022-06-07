@@ -113,7 +113,7 @@ public class PlayerState : MonoBehaviour
         float half = (maxHealth / 2) ;
         if( currentHealth < half )
         {
-            _helicopterController.SetSmokeRate( Mathf.RoundToInt((100 / half) * currentHealth) );
+            _helicopterController.SetSmokeRate( Mathf.RoundToInt((100 / half) * (half - currentHealth)) );
         }
     }
 }
