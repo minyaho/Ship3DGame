@@ -11,9 +11,14 @@ public class TutorialComplete : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log ("Hit goal");
-        gameComplete.gameObject.SetActive(true);
-        PlayerState playerstate = mainPlayer.GetComponent<PlayerState>();
-        playerstate.timerUpdate = false;
+
+        if( collision.transform.tag == "Player" )
+        {
+            Debug.Log ("Hit goal");
+            gameComplete.gameObject.SetActive(true);
+            PlayerState playerstate = mainPlayer.GetComponent<PlayerState>();
+            playerstate.timerUpdate = false;
+            mainPlayer.SetActive(false);
+        }
     }
 }

@@ -76,7 +76,7 @@ public class BombingController : MonoBehaviour
                     indicator.position = new Vector3(point2.x, point2.y + (helicopter.position.y - point2.y), point2.z);
                     indicator.gameObject.SetActive(true);
                 }
-                else if( distance > 10.0f && distance < helicopter.position.y )
+                else if( distance > 3.0f && distance < helicopter.position.y )
                 {
                     indicator.position = new Vector3(point2.x, maxScale, point2.z);
                     indicator.gameObject.SetActive(true);

@@ -1136,7 +1136,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 0.25
+      probability: 1
     - serializedVersion: 2
       time: 0.05
       countCurve:
@@ -1194,7 +1194,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 0.75
+      probability: 1
   SizeModule:
     enabled: 1
     curve:
@@ -10108,5 +10108,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
