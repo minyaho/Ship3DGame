@@ -18,7 +18,7 @@ public class TutorialComplete : MonoBehaviour
             gameComplete.gameObject.SetActive(true);
             PlayerState playerstate = mainPlayer.GetComponent<PlayerState>();
             playerstate.timerUpdate = false;
-            mainPlayer.SetActive(false);
+            mainPlayer.transform.parent.gameObject.SetActive(false);
         }
     }
 }
